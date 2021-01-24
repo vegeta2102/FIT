@@ -10,14 +10,32 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/teal_700"
+        android:background="@color/white"
         tools:context=".MainFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+        <Button
+            android:id="@+id/motorbike"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:text="普通自動二輪車"
+            app:layout_constraintEnd_toStartOf="@id/car"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/car"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="普通自動車"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/motorbike"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
