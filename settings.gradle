@@ -1,3 +1,4 @@
+include ':feature:excel_reading'
 include ':feature:model'
 include ':feature:repository'
 include ':feature:startup'
