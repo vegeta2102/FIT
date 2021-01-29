@@ -36,6 +36,7 @@ android {
 
 dependencies {
 
+    implementation project(":feature:model")
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx
