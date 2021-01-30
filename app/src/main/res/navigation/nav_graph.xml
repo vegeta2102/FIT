@@ -14,5 +14,13 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="jp.co.vegeta.fit.MainFragment" />
+        android:name="jp.co.vegeta.fit.MainFragment">
+        <action
+            android:id="@+id/main_to_excel_reading"
+            app:destination="@id/excelFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/excelFragment"
+        android:name="jp.co.vegeta.excel_reading.view.ExcelReadingFragment" />
 </navigation>

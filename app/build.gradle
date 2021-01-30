@@ -54,6 +54,9 @@ dependencies {
 
     implementation project(":feature:currency")
     implementation project(":feature:startup")
+    implementation project(":feature:excel_reading")
+    implementation project(":feature:model")
+    implementation project(":feature:repository")
 
     // Core
     implementation Dep.Kotlin.stdlibJvm
