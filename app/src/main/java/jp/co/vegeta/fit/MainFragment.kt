@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.fit.databinding.FragmentMainBinding
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.util.concurrent.TimeUnit
+import kotlin.time.Duration
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
