@@ -3,6 +3,8 @@ package jp.co.vegeta.fit
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -15,6 +17,8 @@ import kotlin.time.Duration
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
+    private val viewModel: MainViewModel by activityViewModels()
+
     private val navigation: NavController by lazy {
         findNavController()
     }
@@ -26,7 +30,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
         lifecycleScope.launchWhenCreated {
             excel_reading.setOnClickListener {
-                navigation.navigate(R.id.main_to_excel_reading)
+                viewModel.showSnackBarTest()
+            }
+            car.setOnClickListener {
+                viewModel.showSnackBar()
             }
         }
     }

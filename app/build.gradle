@@ -55,6 +55,7 @@ dependencies {
     implementation project(":feature:currency")
     implementation project(":feature:startup")
     implementation project(":feature:excel_reading")
+    implementation project(":feature:car")
     implementation project(":feature:model")
     implementation project(":feature:repository")
 
