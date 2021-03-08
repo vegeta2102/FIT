@@ -4,11 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import jp.co.vegeta.car.view.SnackBarViewState
 import jp.co.vegeta.model.SnackBar
-import jp.co.vegeta.snackbar.di.SnackBarRepository
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
+import jp.co.vegeta.snackbar.SnackBarRepository
 import kotlinx.coroutines.launch
 
 /**

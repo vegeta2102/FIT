@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="jp.co.vegeta.excel_reading.view.viewmodel.ExcelReadingViewModel" />
     </data>
     <androidx.constraintlayout.motion.widget.MotionLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"

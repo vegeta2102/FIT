@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.fit.databinding.FragmentMainBinding
@@ -30,10 +31,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
         lifecycleScope.launchWhenCreated {
             excel_reading.setOnClickListener {
-                viewModel.showSnackBarTest()
+                //viewModel.showSnackBarTest()
+                navigation.navigate(R.id.main_to_excel_reading)
             }
             car.setOnClickListener {
                 viewModel.showSnackBar()
+            }
+            flow.setOnClickListener {
+                navigation.navigate(R.id.main_to_medium)
             }
         }
     }

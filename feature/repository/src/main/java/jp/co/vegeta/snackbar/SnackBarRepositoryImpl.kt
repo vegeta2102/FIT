@@ -1,6 +1,7 @@
-package jp.co.vegeta.snackbar.di
+package jp.co.vegeta.snackbar
 
 import jp.co.vegeta.model.SnackBar
+import jp.co.vegeta.snackbar.SnackBarRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -8,7 +9,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 /**
  * Created by vegeta on 2021/02/15.
  */
-internal class SnackBarRepositoryImpl : SnackBarRepository {
+internal class SnackBarRepositoryImpl :
+    SnackBarRepository {
     private val supervisorJob = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.Default + supervisorJob)
     private var delayJob: Job? = null

@@ -1,3 +1,4 @@
+include ':feature:medium'
 include ':feature:car'
 include ':feature:excel_reading'
 include ':feature:model'

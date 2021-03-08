@@ -1,4 +1,4 @@
-package jp.co.vegeta.snackbar.di
+package jp.co.vegeta.snackbar
 
 import jp.co.vegeta.model.SnackBar
 import kotlinx.coroutines.flow.Flow

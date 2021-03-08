@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="jp.co.vegeta.medium.view.viewmodel.MediumViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/flow_value"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="100dp"
+            android:text="@{viewmodel.flowValue}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/emit_button"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:text="click"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flow_value" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
