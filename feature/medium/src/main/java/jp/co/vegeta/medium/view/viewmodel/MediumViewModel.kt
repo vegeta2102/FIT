@@ -22,4 +22,19 @@ class MediumViewModel @ViewModelInject constructor(
     val flowValue: LiveData<String>
         get() = mediumRepository.data.filterNotNull().asLiveData()
 
+    private val _progress = MutableLiveData(0)
+    val progress: LiveData<Int>
+        get() = _progress
+
+    fun clickUp() {
+        _progress.value?.let {
+            _progress.value = (it + 1).coerceAtMost(10)
+        }
+    }
+
+    fun clickDown() {
+        _progress.value?.let {
+            _progress.value = (it - 1).coerceAtLeast(1)
+        }
+    }
 }
