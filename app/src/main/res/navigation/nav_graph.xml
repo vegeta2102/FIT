@@ -26,7 +26,8 @@
     <fragment
         android:id="@+id/excelFragment"
         android:name="jp.co.vegeta.excel_reading.view.ExcelReadingFragment" />
-    <fragment
-        android:id="@+id/mediumFragment"
-        android:name="jp.co.vegeta.medium.view.MediumFragment" />
+    <include app:graph="@navigation/sub_medium_nav" />
+    <action
+        android:id="@+id/action_global_medium"
+        app:destination="@id/sub_medium_nav" />
 </navigation>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sub_medium_nav"
+    app:startDestination="@id/mediumFragment">
+    <fragment
+        android:id="@+id/mediumFragment"
+        android:name="jp.co.vegeta.medium.view.MediumFragment">
+        <action
+            android:id="@+id/action_to_next_screen"
+            app:destination="@id/nextScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nextScreenFragment"
+        android:name="jp.co.vegeta.medium.view.NextScreenFragment" />
+</navigation>

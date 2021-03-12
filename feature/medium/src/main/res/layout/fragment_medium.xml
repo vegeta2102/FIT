@@ -64,6 +64,17 @@
             app:layout_constraintTop_toBottomOf="@id/emit_button_down"
             tools:progress="43" />
 
+        <Button
+            android:id="@+id/open_other_screen"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> viewmodel.showNextScreen()}"
+            android:text="ShowNextScreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

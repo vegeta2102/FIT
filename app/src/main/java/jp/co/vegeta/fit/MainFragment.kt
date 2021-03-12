@@ -38,7 +38,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 viewModel.showSnackBar()
             }
             flow.setOnClickListener {
-                navigation.navigate(R.id.main_to_medium)
+                navigation.navigate(R.id.action_global_medium)
             }
         }
     }

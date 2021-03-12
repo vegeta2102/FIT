@@ -37,4 +37,12 @@ class MediumViewModel @ViewModelInject constructor(
             _progress.value = (it - 1).coerceAtLeast(1)
         }
     }
+
+    private val _nextRequest = MutableLiveData<Unit>()
+    val nextRequest: LiveData<Unit>
+        get() = _nextRequest
+
+    fun showNextScreen() {
+        _nextRequest.postValue(Unit)
+    }
 }

@@ -11,48 +11,45 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.medium.R
-import jp.co.vegeta.medium.databinding.FragmentMediumBinding
-import jp.co.vegeta.medium.view.viewmodel.MediumViewModel
+import jp.co.vegeta.medium.databinding.FragmentNextScreenBinding
 import jp.co.vegeta.medium.view.viewmodel.NextScreenViewModel
 
 /**
- * Created by vegeta on 2021/03/08.
+ * Created by vegeta on 2021/03/12.
  */
-
 @AndroidEntryPoint
-class MediumFragment : Fragment(R.layout.fragment_medium) {
-
+class NextScreenFragment : Fragment(R.layout.fragment_next_screen) {
+    private val nextScreenViewModel: NextScreenViewModel by viewModels()
     private val navigation: NavController by lazy {
         findNavController()
     }
-    private val mediumViewModel: MediumViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FragmentMediumBinding.bind(view).apply {
+        FragmentNextScreenBinding.bind(view).apply {
             lifecycleOwner = viewLifecycleOwner
-            viewmodel = mediumViewModel
+            viewmodel = nextScreenViewModel
         }
         observeViewModel()
-        navigateCallBack()
-    }
-
-    private fun navigateCallBack() {
-        navigation.currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>("key")
-            ?.observe(viewLifecycleOwner) {
-                Log.d(TAG, it.toString())
-            }
     }
 
     private fun observeViewModel() {
-        with(mediumViewModel) {
-            nextRequest.observe(viewLifecycleOwner) {
-                navigation.navigate(R.id.action_to_next_screen)
+        with(nextScreenViewModel) {
+            openRequest.observe(viewLifecycleOwner) {
+                Log.d(TAG, "openRequest")
+            }
+            closeRequest.observe(viewLifecycleOwner) {
+                Log.d(TAG, "closeRequest")
+                navigation.previousBackStackEntry?.savedStateHandle?.set(
+                    "key",
+                    true
+                )
+                navigation.popBackStack()
             }
         }
-
     }
 
     companion object {
-        val TAG = MediumFragment::class.simpleName
+        val TAG = NextScreenFragment::class.simpleName
     }
 }
