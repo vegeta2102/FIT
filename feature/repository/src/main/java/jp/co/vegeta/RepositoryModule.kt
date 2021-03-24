@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import jp.co.vegeta.medium.MediumRepository
 import jp.co.vegeta.medium.MediumRepositoryImpl
+import jp.co.vegeta.progress.ProgressBarRepository
+import jp.co.vegeta.progress.ProgressBarRepositoryImpl
 import jp.co.vegeta.snackbar.SnackBarRepository
 import jp.co.vegeta.snackbar.SnackBarRepositoryImpl
 import javax.inject.Singleton
@@ -27,6 +29,12 @@ internal abstract class RepositoryModule {
         @Singleton
         fun provideMediumRepository(): MediumRepository {
             return MediumRepositoryImpl()
+        }
+
+        @Provides
+        @Singleton
+        fun provideProgressBarRepository(): ProgressBarRepository {
+            return ProgressBarRepositoryImpl()
         }
     }
 }

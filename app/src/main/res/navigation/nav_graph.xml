@@ -21,6 +21,9 @@
         <action
             android:id="@+id/main_to_medium"
             app:destination="@id/mediumFragment" />
+        <action
+            android:id="@+id/main_to_progressbar"
+            app:destination="@id/progressBarFragment" />
     </fragment>
 
     <fragment
@@ -30,4 +33,7 @@
     <action
         android:id="@+id/action_global_medium"
         app:destination="@id/sub_medium_nav" />
+    <fragment
+        android:id="@+id/progressBarFragment"
+        android:name="jp.co.vegeta.progressbar.ProgressBarFragment" />
 </navigation>

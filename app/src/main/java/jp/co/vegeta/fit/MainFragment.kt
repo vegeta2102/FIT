@@ -40,6 +40,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             flow.setOnClickListener {
                 navigation.navigate(R.id.action_global_medium)
             }
+            progressbar.setOnClickListener {
+                navigation.navigate(R.id.main_to_progressbar)
+            }
         }
     }
 }

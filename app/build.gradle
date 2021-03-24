@@ -56,6 +56,7 @@ dependencies {
     implementation project(":feature:startup")
     implementation project(":feature:excel_reading")
     implementation project(":feature:medium")
+    implementation project(":feature:progressbar")
     implementation project(":feature:car")
     implementation project(":feature:model")
     implementation project(":feature:repository")
