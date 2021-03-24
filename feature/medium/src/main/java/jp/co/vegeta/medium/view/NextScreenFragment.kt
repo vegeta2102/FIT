@@ -40,10 +40,7 @@ class NextScreenFragment : Fragment(R.layout.fragment_next_screen) {
             }
             closeRequest.observe(viewLifecycleOwner) {
                 Log.d(TAG, "closeRequest")
-                navigation.previousBackStackEntry?.savedStateHandle?.set(
-                    "key",
-                    true
-                )
+                navigation.previousBackStackEntry?.savedStateHandle?.set("key", true)
                 navigation.popBackStack()
             }
         }
