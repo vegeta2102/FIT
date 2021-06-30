@@ -3,16 +3,21 @@ package jp.co.vegeta.fit
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import jp.co.vegeta.car.view.SnackBarViewState
+import jp.co.vegeta.dialog.DialogMessageRepository
 import jp.co.vegeta.model.SnackBar
 import jp.co.vegeta.snackbar.SnackBarRepository
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 
 /**
  * Created by vegeta on 2021/02/15.
  */
 class MainViewModel @ViewModelInject constructor(
-    private val snackBarRepository: SnackBarRepository
+    private val snackBarRepository: SnackBarRepository,
+    private val dialogMessageRepository: DialogMessageRepository
 ) : ViewModel() {
+
+    val requestDialogMessage = dialogMessageRepository.dialogMessageFlow.filterNotNull().asLiveData()
 
     val snackBarViewState: SnackBarViewState by lazy {
         SnackBarViewState(snackBar = snackBarRepository.data.asLiveData())

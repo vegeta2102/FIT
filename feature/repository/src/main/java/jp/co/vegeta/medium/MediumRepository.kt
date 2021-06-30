@@ -8,4 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface MediumRepository {
     suspend fun fetch()
     val data: Flow<String?>
+
+    suspend fun execute()
+    suspend fun nextStep()
 }

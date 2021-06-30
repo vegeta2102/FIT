@@ -4,6 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import jp.co.vegeta.dialog.DialogMessageRepository
+import jp.co.vegeta.dialog.DialogMessageRepositoryImpl
 import jp.co.vegeta.medium.MediumRepository
 import jp.co.vegeta.medium.MediumRepositoryImpl
 import jp.co.vegeta.progress.ProgressBarRepository
@@ -29,6 +31,12 @@ internal abstract class RepositoryModule {
         @Singleton
         fun provideMediumRepository(): MediumRepository {
             return MediumRepositoryImpl()
+        }
+
+        @Provides
+        @Singleton
+        fun provideDialogMessageRepository(): DialogMessageRepository {
+            return DialogMessageRepositoryImpl()
         }
 
         @Provides

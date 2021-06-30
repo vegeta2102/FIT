@@ -11,6 +11,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
@@ -67,7 +68,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
         with(mainViewModel) {
-
+            requestDialogMessage.observe(this@MainActivity) {
+                AlertDialog.Builder(this@MainActivity)
+                    .setMessage(it)
+                    .create()
+                    .show()
+            }
         }
     }
 
