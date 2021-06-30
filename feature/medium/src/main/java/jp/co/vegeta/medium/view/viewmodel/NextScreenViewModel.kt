@@ -4,13 +4,14 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import jp.co.vegeta.core.extentions.SingleLiveEvent
 
 /**
  * Created by vegeta on 2021/03/12.
  */
 class NextScreenViewModel @ViewModelInject constructor() : ViewModel() {
 
-    private val _closeRequest = MutableLiveData<Unit>()
+    private val _closeRequest = SingleLiveEvent<Unit>()
     val closeRequest: LiveData<Unit> = _closeRequest
 
     private val _openRequest = MutableLiveData<Unit>()

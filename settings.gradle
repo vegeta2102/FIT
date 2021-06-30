@@ -7,4 +7,5 @@ include ':feature:repository'
 include ':feature:startup'
 include ':app'
 include ':feature:currency'
+include ':feature:core'
 rootProject.name = "FIT"

@@ -60,6 +60,7 @@ dependencies {
     implementation project(":feature:car")
     implementation project(":feature:model")
     implementation project(":feature:repository")
+    implementation project(":feature:core")
 
     // Core
     implementation Dep.Kotlin.stdlibJvm

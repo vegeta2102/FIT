@@ -46,6 +46,7 @@ class MediumFragment : Fragment(R.layout.fragment_medium) {
     private fun observeViewModel() {
         with(mediumViewModel) {
             nextRequest.observe(viewLifecycleOwner) {
+                Log.d(TAG, "Go next")
                 navigation.navigate(R.id.action_to_next_screen)
             }
         }

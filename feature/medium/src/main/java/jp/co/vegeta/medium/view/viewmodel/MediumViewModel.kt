@@ -3,6 +3,7 @@ package jp.co.vegeta.medium.view.viewmodel
 import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import jp.co.vegeta.core.extentions.SingleLiveEvent
 import jp.co.vegeta.dialog.DialogMessageRepository
 import jp.co.vegeta.medium.MediumRepository
 import kotlinx.coroutines.flow.filterNotNull
@@ -54,7 +55,7 @@ class MediumViewModel @ViewModelInject constructor(
         }
     }
 
-    private val _nextRequest = MutableLiveData<Unit>()
+    private val _nextRequest = SingleLiveEvent<Unit>()
     val nextRequest: LiveData<Unit>
         get() = _nextRequest
 
