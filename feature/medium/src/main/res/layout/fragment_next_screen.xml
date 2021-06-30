@@ -16,22 +16,32 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="100dp"
-            android:text="Close"
             android:onClick="@{() -> viewmodel.close()}"
+            android:text="Close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="20dp"
-            android:text="Open"
             android:onClick="@{() -> viewmodel.open()}"
+            android:text="Open"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:onClick="@{() -> viewmodel.runJob()}"
+            android:text="JOBRUN"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

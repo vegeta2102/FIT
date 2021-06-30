@@ -12,6 +12,10 @@ import jp.co.vegeta.progress.ProgressBarRepository
 import jp.co.vegeta.progress.ProgressBarRepositoryImpl
 import jp.co.vegeta.snackbar.SnackBarRepository
 import jp.co.vegeta.snackbar.SnackBarRepositoryImpl
+import jp.co.vegeta.test_repo.FlowGetJobRepository
+import jp.co.vegeta.test_repo.FlowGetJobRepositoryImpl
+import jp.co.vegeta.test_repo.FlowShowJobRepository
+import jp.co.vegeta.test_repo.FlowShowJobRepositoryImpl
 import javax.inject.Singleton
 
 /**
@@ -43,6 +47,18 @@ internal abstract class RepositoryModule {
         @Singleton
         fun provideProgressBarRepository(): ProgressBarRepository {
             return ProgressBarRepositoryImpl()
+        }
+
+        @Provides
+        @Singleton
+        fun provideGetJobRepository(): FlowGetJobRepository {
+            return FlowGetJobRepositoryImpl()
+        }
+
+        @Provides
+        @Singleton
+        fun provideShowJobRepository(): FlowShowJobRepository {
+            return FlowShowJobRepositoryImpl()
         }
     }
 }

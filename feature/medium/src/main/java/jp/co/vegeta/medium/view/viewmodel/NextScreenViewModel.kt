@@ -4,12 +4,20 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import jp.co.vegeta.core.extentions.SingleLiveEvent
+import jp.co.vegeta.test_repo.FlowGetJobRepository
+import jp.co.vegeta.test_repo.FlowShowJobRepository
+import jp.co.vegeta.usecase.UseCaseFlowJob
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Created by vegeta on 2021/03/12.
  */
-class NextScreenViewModel @ViewModelInject constructor() : ViewModel() {
+class NextScreenViewModel @ViewModelInject constructor(
+    private val useCaseFlowJob: UseCaseFlowJob
+) : ViewModel() {
 
     private val _closeRequest = SingleLiveEvent<Unit>()
     val closeRequest: LiveData<Unit> = _closeRequest
@@ -23,5 +31,11 @@ class NextScreenViewModel @ViewModelInject constructor() : ViewModel() {
 
     fun open() {
         _openRequest.postValue(Unit)
+    }
+
+    fun runJob() {
+        viewModelScope.launch {
+            useCaseFlowJob.execute()
+        }
     }
 }
