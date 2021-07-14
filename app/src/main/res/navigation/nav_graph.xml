@@ -24,6 +24,9 @@
         <action
             android:id="@+id/main_to_progressbar"
             app:destination="@id/progressBarFragment" />
+        <action
+            android:id="@+id/main_to_paint"
+            app:destination="@id/paintFragment" />
     </fragment>
 
     <fragment
@@ -36,4 +39,7 @@
     <fragment
         android:id="@+id/progressBarFragment"
         android:name="jp.co.vegeta.progressbar.ProgressBarFragment" />
+    <fragment
+        android:id="@+id/paintFragment"
+        android:name="jp.co.vegeta.paint.view.PaintFragment" />
 </navigation>

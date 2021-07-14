@@ -36,6 +36,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
             car.setOnClickListener {
                 viewModel.showSnackBar()
+                navigation.navigate(R.id.main_to_paint)
             }
             flow.setOnClickListener {
                 navigation.navigate(R.id.action_global_medium)
