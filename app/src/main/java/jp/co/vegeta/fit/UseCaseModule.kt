@@ -4,6 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import jp.co.vegeta.usecase.UseCaseCheckGuidance
+import jp.co.vegeta.usecase.UseCaseCheckGuidanceImpl
 import jp.co.vegeta.usecase.UseCaseFlowJob
 import jp.co.vegeta.usecase.UseCaseFlowJobImpl
 
@@ -18,4 +20,9 @@ abstract class UseCaseModule {
     abstract fun provideUseCaseFlowJob(
         impl: UseCaseFlowJobImpl
     ): UseCaseFlowJob
+
+    @Binds
+    abstract fun provideUseCaseCheckGuidance(
+        impl: UseCaseCheckGuidanceImpl
+    ): UseCaseCheckGuidance
 }
