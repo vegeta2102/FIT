@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.ContextCompat
 import jp.co.vegeta.paint.R
 
 
@@ -98,10 +99,10 @@ class DrawingView @JvmOverloads constructor(
         return true
     }
 
-    fun setColor(newColor: String?) {
+    fun setColor(newColor: Int) {
         // invalidate the view
         invalidate()
-        paintColor = Color.parseColor(newColor)
+        paintColor = ContextCompat.getColor(this.context, newColor)
         drawPaint.color = paintColor
         previousColor = paintColor
     }

@@ -35,7 +35,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 navigation.navigate(R.id.main_to_excel_reading)
             }
             car.setOnClickListener {
-                viewModel.showSnackBar()
+                // viewModel.showSnackBar()
                 navigation.navigate(R.id.main_to_paint)
             }
             flow.setOnClickListener {
