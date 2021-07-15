@@ -36,6 +36,7 @@ class PaintFragment : Fragment(R.layout.fragment_paint) {
             binding.drawingView.setErase(isErase = true)
         }
         binding.save.setOnClickListener {
+            binding.drawingView.startNew()
         }
         binding.fab.setOnClickListener {
             showAlertDialog(binding)
