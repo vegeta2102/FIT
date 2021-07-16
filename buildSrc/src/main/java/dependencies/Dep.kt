@@ -118,6 +118,16 @@ object Dep {
         const val adapterRxJava2 = "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
     }
 
+    object File {
+        const val imageWorker = "com.github.ihimanshurawat:ImageWorker:1.1.1"
+    }
+
+    @Suppress("unused")
+    object PermissionsDispatcher {
+        const val permissionsDispatcher = "org.permissionsdispatcher:permissionsdispatcher:4.8.0"
+        const val processor = "org.permissionsdispatcher:permissionsdispatcher-processor:4.8.0"
+    }
+
     object Test {
         object Mock {
             const val assertk = "com.willowtreeapps.assertk:assertk-jvm:0.22"

@@ -49,7 +49,7 @@ dependencies {
     implementation Dep.AndroidX.lifecycleLiveDataKtx
     implementation Dep.AndroidX.lifecycleViewModelKtx
     implementation Dep.AndroidX.lifecycleRuntimeKtx
-
+    implementation Dep.File.imageWorker
     // Navigation
     implementation Dep.AndroidX.Navigation.common
     implementation Dep.AndroidX.Navigation.commonKtx

@@ -3,6 +3,9 @@ package jp.co.vegeta.paint.view
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.os.Environment
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
@@ -97,6 +100,16 @@ class DrawingView @JvmOverloads constructor(
         // invalidate the view so that canvas is redrawn.
         invalidate()
         return true
+    }
+
+    fun loadFile(bitmap: Bitmap) {
+        // val bMap = BitmapFactory.decodeFile(Environment.getExternalStorageState() + "/test.png")
+        val d: Drawable = BitmapDrawable(resources, bitmap)
+        d.setBounds(left, top, right, bottom)
+        drawCanvas?.let {
+            d.draw(it)
+            invalidate()
+        }
     }
 
     fun setColor(newColor: Int) {

@@ -63,6 +63,10 @@ dependencies {
     implementation project(":feature:repository")
     implementation project(":feature:core")
 
+    // Permission Dispatcher
+    implementation Dep.PermissionsDispatcher.permissionsDispatcher
+    kapt Dep.PermissionsDispatcher.processor
+
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx
