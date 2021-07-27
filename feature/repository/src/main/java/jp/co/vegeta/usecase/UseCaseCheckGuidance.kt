@@ -1,8 +1,10 @@
 package jp.co.vegeta.usecase
 
+import kotlinx.coroutines.flow.Flow
+
 /**
  * Created by vegeta on 2021/07/08.
  */
 interface UseCaseCheckGuidance {
-    suspend fun execute()
+    fun execute() : Flow<String>
 }

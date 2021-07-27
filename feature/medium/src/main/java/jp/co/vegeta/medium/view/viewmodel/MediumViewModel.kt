@@ -6,6 +6,8 @@ import androidx.lifecycle.*
 import jp.co.vegeta.core.extentions.SingleLiveEvent
 import jp.co.vegeta.dialog.DialogMessageRepository
 import jp.co.vegeta.medium.MediumRepository
+import jp.co.vegeta.usecase.UseCaseCheckGuidance
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 
@@ -14,13 +16,20 @@ import kotlinx.coroutines.launch
  */
 class MediumViewModel @ViewModelInject constructor(
     private val mediumRepository: MediumRepository,
-    private val dialogMessageRepository: DialogMessageRepository
+    private val dialogMessageRepository: DialogMessageRepository,
+    private val useCaseCheckGuidance: UseCaseCheckGuidance
 ) : ViewModel() {
 
     init {
         viewModelScope.launch {
+            delay(3000L)
             mediumRepository.fetch()
         }
+    }
+
+    val guidance: LiveData<String> by lazy {
+        Log.d("Medium", "Run?")
+        useCaseCheckGuidance.execute().asLiveData()
     }
 
     val flowValue: LiveData<String>

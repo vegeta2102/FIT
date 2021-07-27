@@ -49,6 +49,10 @@ class MediumFragment : Fragment(R.layout.fragment_medium) {
                 Log.d(TAG, "Go next")
                 navigation.navigate(R.id.action_to_next_screen)
             }
+
+            guidance.observe(viewLifecycleOwner) {
+                Log.d(TAG, it.plus("Guidance"))
+            }
         }
 
     }
