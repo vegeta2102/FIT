@@ -7,6 +7,7 @@ import jp.co.vegeta.core.extentions.SingleLiveEvent
 import jp.co.vegeta.core.extentions.withNoNulls
 import jp.co.vegeta.dialog.DialogMessageRepository
 import jp.co.vegeta.medium.MediumRepository
+import jp.co.vegeta.model.DeliveryOption
 import jp.co.vegeta.usecase.UseCaseCheckGuidance
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filterNotNull
@@ -50,6 +51,12 @@ class MediumViewModel @ViewModelInject constructor(
         withNoNulls(test1, test2) { v1, v2 ->
             Log.d("Test", "Value: $v1, $v2")
         }
+
+        val guy = DeliveryOption.Guy(
+            id = 12,
+            name = "People"
+        )
+        guy.toString()
 
         /*_progress.value?.let {
             _progress.value = (it + 1).coerceAtMost(10)
