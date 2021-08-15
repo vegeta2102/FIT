@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import jp.co.vegeta.core.extentions.SingleLiveEvent
+import jp.co.vegeta.core.extentions.withNoNulls
 import jp.co.vegeta.dialog.DialogMessageRepository
 import jp.co.vegeta.medium.MediumRepository
 import jp.co.vegeta.usecase.UseCaseCheckGuidance
@@ -40,6 +41,16 @@ class MediumViewModel @ViewModelInject constructor(
         get() = _progress
 
     fun clickUp() {
+        var test1: String? = null
+        var test2: String? = null
+        test1 = "1212"
+        test2 = test1.takeIf {
+            it.length > 10
+        }?.plus("hello")
+        withNoNulls(test1, test2) { v1, v2 ->
+            Log.d("Test", "Value: $v1, $v2")
+        }
+
         /*_progress.value?.let {
             _progress.value = (it + 1).coerceAtMost(10)
         }*/
