@@ -10,6 +10,8 @@ import jp.co.vegeta.medium.MediumRepository
 import jp.co.vegeta.medium.MediumRepositoryImpl
 import jp.co.vegeta.progress.ProgressBarRepository
 import jp.co.vegeta.progress.ProgressBarRepositoryImpl
+import jp.co.vegeta.route.RouteRepository
+import jp.co.vegeta.route.RouteRepositoryImpl
 import jp.co.vegeta.snackbar.SnackBarRepository
 import jp.co.vegeta.snackbar.SnackBarRepositoryImpl
 import jp.co.vegeta.test_repo.*
@@ -62,6 +64,12 @@ internal abstract class RepositoryModule {
         @Singleton
         fun provideGuidanceStatusRepository(): GuidanceStatusRepository {
             return GuidanceStatusRepositoryImpl()
+        }
+
+        @Provides
+        @Singleton
+        fun provideRouteRepository(): RouteRepository {
+            return RouteRepositoryImpl()
         }
     }
 }
