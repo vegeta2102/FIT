@@ -49,7 +49,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         requestPermissionWithPermissionCheck()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         onRequestPermissionsResult(requestCode, grantResults)
     }
@@ -73,6 +77,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
             progressbar.setOnClickListener {
                 navigation.navigate(R.id.main_to_progressbar)
+            }
+            motorbike.setOnClickListener {
+                navigation.navigate(R.id.main_to_list_view)
             }
         }
     }

@@ -27,6 +27,9 @@
         <action
             android:id="@+id/main_to_paint"
             app:destination="@id/paintFragment" />
+        <action
+            android:id="@+id/main_to_list_view"
+            app:destination="@id/listViewFragment" />
     </fragment>
 
     <fragment
@@ -42,4 +45,7 @@
     <fragment
         android:id="@+id/paintFragment"
         android:name="jp.co.vegeta.paint.view.PaintFragment" />
+    <fragment
+        android:id="@+id/listViewFragment"
+        android:name="jp.co.vegeta.listview.ListViewFragment" />
 </navigation>

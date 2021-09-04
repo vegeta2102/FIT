@@ -2,7 +2,7 @@ import dependencies.Dep
 import dependencies.Versions
 
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
@@ -14,20 +14,12 @@ android {
     buildToolsVersion Versions.androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "jp.co.vegeta.fit"
         minSdkVersion Versions.androidMinSdkVersion
         targetSdkVersion Versions.androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -40,34 +32,12 @@ android {
     buildFeatures {
         dataBinding true
     }
-
-    lintOptions {
-        abortOnError false
-        checkDependencies true
-        ignoreTestSources true
-
-        disable 'ContentDescription'
-    }
 }
 
 dependencies {
-
-    implementation project(":feature:currency")
-    implementation project(":feature:startup")
-    implementation project(":feature:excel_reading")
-    implementation project(":feature:medium")
-    implementation project(":feature:progressbar")
-    implementation project(":feature:car")
-    implementation project(":feature:paint")
     implementation project(":feature:model")
     implementation project(":feature:repository")
     implementation project(":feature:core")
-    implementation project(":feature:listview")
-
-    // Permission Dispatcher
-    implementation Dep.PermissionsDispatcher.permissionsDispatcher
-    kapt Dep.PermissionsDispatcher.processor
-
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx
