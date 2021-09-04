@@ -31,6 +31,7 @@ class MediumFragment : Fragment(R.layout.fragment_medium) {
         FragmentMediumBinding.bind(view).apply {
             lifecycleOwner = viewLifecycleOwner
             viewmodel = mediumViewModel
+            lifecycle.addObserver(mediumViewModel)
         }
         observeViewModel()
         navigateCallBack()
@@ -52,6 +53,10 @@ class MediumFragment : Fragment(R.layout.fragment_medium) {
 
             guidance.observe(viewLifecycleOwner) {
                 Log.d(TAG, it.plus("Guidance"))
+            }
+
+            testEnum.observe(viewLifecycleOwner) {
+                Log.d(TAG, it.toString())
             }
         }
 
