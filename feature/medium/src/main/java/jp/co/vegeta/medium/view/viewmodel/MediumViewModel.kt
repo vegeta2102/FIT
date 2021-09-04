@@ -121,12 +121,13 @@ class MediumViewModel @ViewModelInject constructor(
             // add(DeliveryOption.Guy(id = 13, name = "13"))
         }*/
         // Log.d("Vegeta", mutableList.toSuffix())
-        // _nextRequest.postValue(Unit)
+        _nextRequest.postValue(Unit)
         i += 1
         viewModelScope.launch {
             mediumRepository.testEmit(i)
             mediumRepository.testEmitEnum(State.OK)
         }
+        _nextRequest.postValue(Unit)
     }
 
     private fun List<DeliveryOption>.toSuffix(): String {
