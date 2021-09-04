@@ -51,4 +51,8 @@ class NextScreenViewModel @ViewModelInject constructor(
             useCaseFlowJob.execute()
         }
     }
+
+    fun testFlow() {
+
+    }
 }
