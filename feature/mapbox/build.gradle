@@ -2,7 +2,7 @@ import dependencies.Dep
 import dependencies.Versions
 
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
@@ -14,20 +14,12 @@ android {
     buildToolsVersion Versions.androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "jp.co.vegeta.fit"
         minSdkVersion Versions.androidMinSdkVersion
         targetSdkVersion Versions.androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -40,33 +32,18 @@ android {
     buildFeatures {
         dataBinding true
     }
-
-    lintOptions {
-        abortOnError false
-        checkDependencies true
-        ignoreTestSources true
-
-        disable 'ContentDescription'
-    }
 }
 
 dependencies {
-
-    implementation project(":feature:startup")
-    implementation project(":feature:model")
     implementation project(":feature:repository")
+    implementation project(":feature:model")
     implementation project(":feature:core")
-
-
-    // Permission Dispatcher
-    implementation Dep.PermissionsDispatcher.permissionsDispatcher
-    kapt Dep.PermissionsDispatcher.processor
-
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx
     implementation Dep.AndroidX.appCompat
     implementation Dep.AndroidX.design
+    implementation Dep.Kotlin.coroutines
     implementation Dep.AndroidX.constraint
 
     implementation Dep.AndroidX.lifecycleExtensions
@@ -92,6 +69,7 @@ dependencies {
 
     // Other
     implementation Dep.timber
+
     // Test
     testImplementation Dep.Test.JUnit.junit4
     testImplementation Dep.Test.JUnit.api
