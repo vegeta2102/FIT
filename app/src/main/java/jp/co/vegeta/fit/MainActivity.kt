@@ -3,7 +3,6 @@ package jp.co.vegeta.fit
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
@@ -51,23 +50,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         with(mainViewModel) {
-            requestDialogMessage.observe(this@MainActivity) {
-                AlertDialog.Builder(this@MainActivity)
-                    .setMessage(it)
-                    .create()
-                    .show()
-            }
         }
-    }
-
-    private fun setupTextView() {
-        /*snack_bar.startAnimation(
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.transition_up
-            ).apply {
-                startOffset = 500L
-            }
-        )*/
     }
 }
