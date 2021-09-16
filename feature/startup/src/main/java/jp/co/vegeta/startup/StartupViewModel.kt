@@ -29,5 +29,4 @@ class StartupViewModel @Inject constructor() : ViewModel() {
             mutableInitFinished.postValue(Unit)
         }
     }
-
 }
