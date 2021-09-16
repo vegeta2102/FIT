@@ -2,6 +2,7 @@ package jp.co.vegeta.fit
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
 /**
  * Created by vegeta on 2021/01/23.
@@ -15,6 +16,6 @@ class FitApp : Application() {
     }
 
     private fun init() {
-        // TODO Init here
+        Timber.plant(Timber.DebugTree())
     }
 }

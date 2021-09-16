@@ -118,14 +118,15 @@ object Dep {
         const val adapterRxJava2 = "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
     }
 
-    object File {
-        const val imageWorker = "com.github.ihimanshurawat:ImageWorker:1.1.1"
-    }
+    @Suppress("unused")
+    const val timber = "com.jakewharton.timber:timber:4.7.1"
 
     @Suppress("unused")
     object PermissionsDispatcher {
-        const val permissionsDispatcher = "com.github.permissions-dispatcher:permissionsdispatcher-ktx:4.8.0"
-        const val processor = "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
+        const val permissionsDispatcher =
+            "com.github.permissions-dispatcher:permissionsdispatcher-ktx:4.8.0"
+        const val processor =
+            "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
     }
 
     object Test {

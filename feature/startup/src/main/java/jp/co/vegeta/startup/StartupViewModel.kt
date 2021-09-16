@@ -1,12 +1,12 @@
 package jp.co.vegeta.startup
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -25,7 +25,7 @@ class StartupViewModel @Inject constructor() : ViewModel() {
     fun initialize() {
         viewModelScope.launch {
             delay(100L)
-            Log.d(TAG, "Initialize finished")
+            Timber.d("Initialize")
             mutableInitFinished.postValue(Unit)
         }
     }

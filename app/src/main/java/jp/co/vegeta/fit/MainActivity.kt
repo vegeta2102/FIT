@@ -1,7 +1,6 @@
 package jp.co.vegeta.fit
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.fit.databinding.ActivityMainBinding
 import jp.co.vegeta.startup.StartupViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
         with(viewModel) {
             initFinished.observe(this@MainActivity) {
-                Log.d(TAG, "init event")
+                Timber.d("Init Finished")
                 navController.navigate(R.id.action_to_main)
             }
         }
