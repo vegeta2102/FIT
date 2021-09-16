@@ -124,8 +124,8 @@ object Dep {
 
     @Suppress("unused")
     object PermissionsDispatcher {
-        const val permissionsDispatcher = "org.permissionsdispatcher:permissionsdispatcher:4.8.0"
-        const val processor = "org.permissionsdispatcher:permissionsdispatcher-processor:4.8.0"
+        const val permissionsDispatcher = "com.github.permissions-dispatcher:permissionsdispatcher-ktx:4.8.0"
+        const val processor = "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
     }
 
     object Test {
