@@ -3,7 +3,6 @@
 import dependencies.Dep
 
 buildscript {
-    ext.kotlin_version = "1.4.21"
     repositories {
         google()
         mavenCentral()
