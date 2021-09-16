@@ -52,17 +52,10 @@ android {
 
 dependencies {
 
-    implementation project(":feature:currency")
     implementation project(":feature:startup")
-    implementation project(":feature:excel_reading")
-    implementation project(":feature:medium")
-    implementation project(":feature:progressbar")
-    implementation project(":feature:car")
-    implementation project(":feature:paint")
     implementation project(":feature:model")
     implementation project(":feature:repository")
     implementation project(":feature:core")
-    implementation project(":feature:listview")
 
     // Permission Dispatcher
     implementation Dep.PermissionsDispatcher.permissionsDispatcher

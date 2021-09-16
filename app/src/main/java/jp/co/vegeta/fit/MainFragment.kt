@@ -64,23 +64,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             lifecycleOwner = viewLifecycleOwner
         }
         lifecycleScope.launchWhenCreated {
-            excel_reading.setOnClickListener {
-                //viewModel.showSnackBarTest()
-                navigation.navigate(R.id.main_to_excel_reading)
-            }
-            car.setOnClickListener {
-                // viewModel.showSnackBar()
-                navigation.navigate(R.id.main_to_paint)
-            }
-            flow.setOnClickListener {
-                navigation.navigate(R.id.action_global_medium)
-            }
-            progressbar.setOnClickListener {
-                navigation.navigate(R.id.main_to_progressbar)
-            }
-            motorbike.setOnClickListener {
-                navigation.navigate(R.id.main_to_list_view)
-            }
         }
     }
 }

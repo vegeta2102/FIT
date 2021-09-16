@@ -15,37 +15,6 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="jp.co.vegeta.fit.MainFragment">
-        <action
-            android:id="@+id/main_to_excel_reading"
-            app:destination="@id/excelFragment" />
-        <action
-            android:id="@+id/main_to_medium"
-            app:destination="@id/mediumFragment" />
-        <action
-            android:id="@+id/main_to_progressbar"
-            app:destination="@id/progressBarFragment" />
-        <action
-            android:id="@+id/main_to_paint"
-            app:destination="@id/paintFragment" />
-        <action
-            android:id="@+id/main_to_list_view"
-            app:destination="@id/listViewFragment" />
-    </fragment>
 
-    <fragment
-        android:id="@+id/excelFragment"
-        android:name="jp.co.vegeta.excel_reading.view.ExcelReadingFragment" />
-    <include app:graph="@navigation/sub_medium_nav" />
-    <action
-        android:id="@+id/action_global_medium"
-        app:destination="@id/sub_medium_nav" />
-    <fragment
-        android:id="@+id/progressBarFragment"
-        android:name="jp.co.vegeta.progressbar.ProgressBarFragment" />
-    <fragment
-        android:id="@+id/paintFragment"
-        android:name="jp.co.vegeta.paint.view.PaintFragment" />
-    <fragment
-        android:id="@+id/listViewFragment"
-        android:name="jp.co.vegeta.listview.ListViewFragment" />
+    </fragment>
 </navigation>
