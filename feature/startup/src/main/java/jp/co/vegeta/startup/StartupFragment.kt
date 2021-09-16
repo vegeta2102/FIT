@@ -23,6 +23,7 @@ class StartupFragment : Fragment(R.layout.fragment_startup) {
     }
 
     @NeedsPermission(
+        Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE
     )
@@ -32,6 +33,7 @@ class StartupFragment : Fragment(R.layout.fragment_startup) {
     }
 
     @OnPermissionDenied(
+        Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE
     )
