@@ -22,6 +22,19 @@ allprojects {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven {
+            def propsFile = rootProject.file('github_fit.properties')
+            def props = new Properties()
+            props.load(new FileInputStream(propsFile))
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            credentials {
+                username props['USERNAME']
+                password props['MAPBOX_DOWNLOADS_TOKEN']
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
     }
 }
 

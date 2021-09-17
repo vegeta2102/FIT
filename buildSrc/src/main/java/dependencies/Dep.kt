@@ -5,6 +5,10 @@ package dependencies
  */
 
 object Dep {
+    object Mapbox {
+        const val mapbox = "com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.2"
+    }
+
     object GradlePlugin {
         const val android = "com.android.tools.build:gradle:4.1.1"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"

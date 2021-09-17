@@ -57,6 +57,8 @@ dependencies {
     implementation project(":feature:repository")
     implementation project(":feature:core")
 
+    // Mapbox
+    implementation Dep.Mapbox.mapbox
 
     // Permission Dispatcher
     implementation Dep.PermissionsDispatcher.permissionsDispatcher

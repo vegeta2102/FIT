@@ -1,3 +1,2 @@
 /build
-./github_fit.properties
-./src/main/res/values/mapbox_config.xml
+/src/main/res/values/mapbox_config.xml
