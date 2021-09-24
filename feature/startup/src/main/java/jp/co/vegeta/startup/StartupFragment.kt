@@ -25,7 +25,8 @@ class StartupFragment : Fragment(R.layout.fragment_startup) {
     @NeedsPermission(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.READ_PHONE_STATE,
     )
     fun requestPermission() {
         // パーミッションが許可されていれば起動処理に遷移
@@ -35,7 +36,8 @@ class StartupFragment : Fragment(R.layout.fragment_startup) {
     @OnPermissionDenied(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.READ_PHONE_STATE,
     )
     fun onPermissionDenied() {
         // 拒否された場合は再度パーミッション要求する
