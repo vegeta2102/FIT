@@ -38,10 +38,17 @@ dependencies {
     implementation project(":feature:repository")
     implementation project(":feature:model")
     implementation project(":feature:core")
+    // グロナビSDK
+    implementation project(':navi-sdk')
+    implementation project(':navi-author')
 
     // Mapbox
     implementation Dep.Mapbox.mapbox
-
+    // MapLib
+    implementation Dep.Global.map
+    implementation Dep.Global.navi
+    implementation Dep.Global.naviFlow
+    implementation Dep.Global.globalNavi
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx

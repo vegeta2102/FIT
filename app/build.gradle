@@ -49,20 +49,32 @@ android {
         disable 'ContentDescription'
     }
 }
-
 dependencies {
 
     implementation project(":feature:startup")
     implementation project(":feature:model")
     implementation project(":feature:repository")
     implementation project(":feature:core")
-
+    implementation project(":feature:mapbox")
+    // グロナビSDK
+    implementation project(':navi-sdk')
+    implementation project(':navi-author')
     // Mapbox
     implementation Dep.Mapbox.mapbox
+
+    // MapLib
+    implementation Dep.Global.map
+    implementation Dep.Global.navi
+    implementation Dep.Global.naviFlow
+    implementation Dep.Global.globalNavi
+
 
     // Permission Dispatcher
     implementation Dep.PermissionsDispatcher.permissionsDispatcher
     kapt Dep.PermissionsDispatcher.processor
+
+    implementation Dep.AndroidX.preference
+    implementation Dep.PlayServices.location
 
     // Core
     implementation Dep.Kotlin.stdlibJvm

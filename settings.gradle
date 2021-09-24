@@ -4,4 +4,6 @@ include ':feature:repository'
 include ':feature:startup'
 include ':feature:core'
 include ':feature:mapbox'
+include ':navi-sdk'
+include ':navi-author'
 rootProject.name = "FIT"

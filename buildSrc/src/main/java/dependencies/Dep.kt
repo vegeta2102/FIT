@@ -9,10 +9,25 @@ object Dep {
         const val mapbox = "com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.2"
     }
 
+    object Global {
+        const val version = "1.1.36"
+        const val map = "app.mobilitytechnologies.lib:lib-map:$version"
+        const val navi = "app.mobilitytechnologies.lib:lib-navi:$version"
+        const val naviFlow = "app.mobilitytechnologies.lib:lib-navi-flow:$version"
+        const val globalNavi = "app.mobilitytechnologies.lib:lib-globalnavi:$version"
+    }
+
+    @Suppress("unused")
+    object PlayServices {
+        const val location = "com.google.android.gms:play-services-location:17.0.0"
+        const val maps = "com.google.android.gms:play-services-maps:17.0.0"
+    }
+
     object GradlePlugin {
         const val android = "com.android.tools.build:gradle:4.1.1"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
         const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.30.1-alpha"
+        const val playServices = "com.google.gms:google-services:4.3.3"
     }
 
     object AndroidX {
