@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('navi-arm64v8a-jp-release.aar'))

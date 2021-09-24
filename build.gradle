@@ -11,7 +11,6 @@ buildscript {
         classpath Dep.GradlePlugin.android
         classpath Dep.GradlePlugin.kotlin
         classpath Dep.GradlePlugin.hilt
-        classpath Dep.GradlePlugin.playServices
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -29,35 +28,11 @@ allprojects {
             props.load(new FileInputStream(propsFile))
             url 'https://api.mapbox.com/downloads/v2/releases/maven'
             credentials {
-                username props['MAPBOX_USERNAME']
+                username props['USERNAME']
                 password props['MAPBOX_DOWNLOADS_TOKEN']
             }
             authentication {
                 basic(BasicAuthentication)
-            }
-        }
-        maven {
-            // プロパティファイル読み込み
-            def propsFile = rootProject.file('github_fit.properties')
-            def props = new Properties()
-            props.load(new FileInputStream(propsFile))
-
-            url 'https://maven.pkg.github.com/MobilityTechnologies/go-android-lib-map'
-
-            // 認証情報
-            credentials {
-                username props['username']
-                password props['token']
-            }
-            authentication {
-                basic(BasicAuthentication)  // Basic認証
-            }
-
-            content {
-                includeModule('app.mobilitytechnologies.lib', 'lib-navi')
-                includeModule('app.mobilitytechnologies.lib', 'lib-navi-flow')
-                includeModule('app.mobilitytechnologies.lib', 'lib-map')
-                includeModule('app.mobilitytechnologies.lib', 'lib-globalnavi')
             }
         }
     }
