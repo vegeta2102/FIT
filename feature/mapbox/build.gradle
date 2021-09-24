@@ -38,6 +38,10 @@ dependencies {
     implementation project(":feature:repository")
     implementation project(":feature:model")
     implementation project(":feature:core")
+
+    // Mapbox
+    implementation Dep.Mapbox.mapbox
+
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx
