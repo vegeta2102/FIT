@@ -20,5 +20,11 @@ internal abstract class RepositoryModule {
         fun provideRouteRepository(): RouteRepository {
             return RouteRepositoryImpl()
         }
+
+        @Provides
+        @Singleton
+        fun providePublishStatusRepository(): PublishStatusRepository {
+            return PublishStatusRepositoryImpl()
+        }
     }
 }

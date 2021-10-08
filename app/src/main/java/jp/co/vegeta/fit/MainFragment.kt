@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private val viewModel: MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     private val navigation: NavController by lazy {
         findNavController()
@@ -31,6 +31,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         FragmentMainBinding.bind(view).apply {
             lifecycleOwner = viewLifecycleOwner
+            this.viewModel = mainViewModel
             mapView.onCreate(savedInstanceState)
             mapView.getMapAsync { mapboxMap ->
                 mapboxMap.setStyle(Style.MAPBOX_STREETS) {

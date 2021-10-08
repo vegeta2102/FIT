@@ -92,6 +92,12 @@ dependencies {
     kapt Dep.Dagger.hiltAndroidCompiler
     kapt Dep.Dagger.hiltCompiler
 
+    implementation Dep.RxJava.core
+    implementation Dep.RxJava.android
+    implementation Dep.RxJava.kotlin
+    implementation Dep.RxJava.replay
+    implementation Dep.RxJava.replayingShareKotlin
+
     // Other
     implementation Dep.timber
     // Test
