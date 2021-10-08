@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
  */
 interface PublishStatusRepository {
     val data: Flow<Boolean>
+    suspend fun sendMessage(onSuccess: (String) -> Unit, onFailure: (Throwable) -> Unit)
 }
