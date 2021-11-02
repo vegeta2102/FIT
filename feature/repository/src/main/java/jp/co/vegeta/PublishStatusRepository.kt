@@ -1,5 +1,6 @@
 package jp.co.vegeta
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -8,4 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface PublishStatusRepository {
     val data: Flow<Boolean>
     suspend fun sendMessage(onSuccess: (String) -> Unit, onFailure: (Throwable) -> Unit)
+    fun test(): String
 }

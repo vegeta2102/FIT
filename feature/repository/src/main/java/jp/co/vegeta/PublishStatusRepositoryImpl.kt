@@ -1,5 +1,6 @@
 package jp.co.vegeta
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,6 +26,15 @@ class PublishStatusRepositoryImpl @Inject constructor() : PublishStatusRepositor
             onSuccess.invoke("Good number")
         } else {
             onFailure.invoke(Throwable("Odd number"))
+        }
+    }
+
+    override fun test(): String {
+        randomNumber = Random.nextInt()
+        if (randomNumber % 2 == 0) {
+            return randomNumber.toString()
+        } else {
+            throw Exception("Hello")
         }
     }
 }

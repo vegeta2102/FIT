@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Exception
 
 /**
  * Created by vegeta on 2021/02/15.
@@ -24,6 +25,7 @@ class MainViewModel @ViewModelInject constructor(
 
     fun onClick() {
         viewModelScope.launch {
+            test()
             observeSetup().collect {
                 Timber.d("State : $it")
             }
@@ -41,6 +43,18 @@ class MainViewModel @ViewModelInject constructor(
         )
         awaitClose {
             cancel()
+        }
+    }
+
+    private fun test(): String? {
+        return try {
+            Timber.d("Try")
+            publishStatusRepository.test()
+        } catch (e: Exception) {
+            Timber.d("Catch")
+            null
+        } finally {
+            Timber.d("Finally")
         }
     }
 }
