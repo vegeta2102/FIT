@@ -25,6 +25,12 @@ class RouteRepositoryImpl @Inject constructor() : RouteRepository {
         }
     }
 
+    override suspend fun composeRoute() {
+        val eta = 60L
+        val distance = 2.0
+        mutableRouteData.value = makeRouteData(eta, distance)
+    }
+
     private fun makeRouteData(estimate: Long, distance: Double): Route {
         return Route(
             id = 1,

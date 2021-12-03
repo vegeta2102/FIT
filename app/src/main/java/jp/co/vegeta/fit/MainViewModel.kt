@@ -4,7 +4,9 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import jp.co.vegeta.PublishStatusRepository
+import jp.co.vegeta.UseCaseRoute
 import jp.co.vegeta.core.extentions.State
+import jp.co.vegeta.route.RouteRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.awaitClose
@@ -20,15 +22,28 @@ import java.lang.Exception
  */
 @ExperimentalCoroutinesApi
 class MainViewModel @ViewModelInject constructor(
-    private val publishStatusRepository: PublishStatusRepository
+    private val publishStatusRepository: PublishStatusRepository,
+    private val useCaseRoute: UseCaseRoute,
+    private val routeRepository: RouteRepository,
 ) : ViewModel() {
+
+    fun init() {
+        observeRoute()
+    }
+
+    private fun observeRoute() {
+        viewModelScope.launch {
+            useCaseRoute.execute()
+        }
+    }
 
     fun onClick() {
         viewModelScope.launch {
-            test()
+            /*test()
             observeSetup().collect {
                 Timber.d("State : $it")
-            }
+            }*/
+            routeRepository.composeRoute()
         }
     }
 

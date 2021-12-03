@@ -9,4 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface RouteRepository {
     val data: Flow<Route>
     suspend fun start()
+    suspend fun composeRoute()
 }

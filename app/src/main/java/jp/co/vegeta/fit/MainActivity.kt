@@ -11,9 +11,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.fit.databinding.ActivityMainBinding
 import jp.co.vegeta.startup.StartupViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
 
 @AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -49,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.action_to_main)
             }
         }
-        with(mainViewModel) {
-        }
+        mainViewModel.init()
     }
 }

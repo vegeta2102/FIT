@@ -103,7 +103,7 @@ object Dep {
         const val assistedProcessor = "com.squareup.inject:assisted-inject-processor-dagger2:0.5.2"
 
         const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
-        const val hilt = "com.google.dagger:hilt-android:2.30.1-alpha"
+        const val hilt = "com.google.dagger:hilt-android:2.31.1-alpha"
         const val hiltAndroidCompiler = "androidx.hilt:hilt-compiler:1.0.0-alpha02"
         const val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.30.1-alpha"
     }
