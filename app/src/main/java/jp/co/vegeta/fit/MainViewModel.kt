@@ -33,7 +33,7 @@ class MainViewModel @ViewModelInject constructor(
 
     private fun observeRoute() {
         viewModelScope.launch {
-            useCaseRoute.execute()
+            useCaseRoute.execute(this)
         }
     }
 

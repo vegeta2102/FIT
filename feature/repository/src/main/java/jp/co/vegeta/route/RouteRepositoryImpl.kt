@@ -4,6 +4,7 @@ import jp.co.vegeta.model.Route
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -32,8 +33,9 @@ class RouteRepositoryImpl @Inject constructor() : RouteRepository {
     }
 
     private fun makeRouteData(estimate: Long, distance: Double): Route {
+        val test = Calendar.getInstance().time.time.toInt()
         return Route(
-            id = 1,
+            id = test,
             turnInfo = makeTurnInfo(estimate, distance)
         )
     }
