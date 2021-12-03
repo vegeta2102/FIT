@@ -111,3 +111,6 @@ dependencies {
     testImplementation Dep.Test.Spek.dsl
     testImplementation Dep.Test.Spek.runner
 }
+kapt {
+    correctErrorTypes true
+}
