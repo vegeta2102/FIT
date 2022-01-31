@@ -51,6 +51,5 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.action_to_main)
             }
         }
-        mainViewModel.init()
     }
 }

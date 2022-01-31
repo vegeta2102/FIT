@@ -12,10 +12,12 @@ import com.mapbox.mapboxsdk.maps.Style
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.fit.databinding.FragmentMainBinding
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private val mainViewModel: MainViewModel by activityViewModels()
 
     private val navigation: NavController by lazy {
