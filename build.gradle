@@ -35,6 +35,30 @@ allprojects {
                 basic(BasicAuthentication)
             }
         }
+        maven {
+            // プロパティファイル読み込み
+            def propsFile = rootProject.file('github_fit.properties')
+            def props = new Properties()
+            props.load(new FileInputStream(propsFile))
+
+            url 'https://maven.pkg.github.com/MobilityTechnologies/go-android-lib-map'
+
+            // 認証情報
+            credentials {
+                username props['username']
+                password props['token']
+            }
+            authentication {
+                basic(BasicAuthentication)  // Basic認証
+            }
+
+            content {
+                includeModule('app.mobilitytechnologies.lib', 'lib-navi')
+                includeModule('app.mobilitytechnologies.lib', 'lib-navi-flow')
+                includeModule('app.mobilitytechnologies.lib', 'lib-map')
+                includeModule('app.mobilitytechnologies.lib', 'lib-globalnavi')
+            }
+        }
     }
 }
 
