@@ -26,9 +26,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         FragmentMainBinding.bind(view).also { binding ->
             binding.lifecycleOwner = viewLifecycleOwner
             binding.viewModel = mainViewModel
-            viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                binding.map.initMap()
-            }
+
         }
     }
 }

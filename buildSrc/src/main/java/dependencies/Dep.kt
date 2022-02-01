@@ -19,8 +19,8 @@ object Dep {
     }
 
     object GradlePlugin {
-        const val android = "com.android.tools.build:gradle:4.1.1"
-        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
+        const val android = "com.android.tools.build:gradle:4.1.2"
+        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
         const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.30.1-alpha"
     }
 

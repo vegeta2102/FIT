@@ -5,14 +5,20 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import app.mobilitytechnologies.lib.map.MapComponent
+import app.mobilitytechnologies.lib.navi.globalnavi.flow.flowEnd
+import app.mobilitytechnologies.lib.navi.globalnavi.flow.flowInit
+import app.mobilitytechnologies.lib.navi.model.engine.NaviEngine
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.fit.databinding.ActivityMainBinding
 import jp.co.vegeta.startup.StartupViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions
@@ -32,8 +38,6 @@ class MainActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var viewDataBinding: ActivityMainBinding
-    @Inject
-    lateinit var mapModuleManager: MapModuleManager
     /** メインのFragmentを制御するNavController */
 
     private val navController: NavController by lazy {
@@ -67,8 +71,6 @@ class MainActivity : AppCompatActivity() {
         Manifest.permission.READ_PHONE_STATE,
     )
     fun init() {
-        runBlocking {
-            mapModuleManager.initMap()
-        }
+
     }
 }

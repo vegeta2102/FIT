@@ -29,18 +29,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    flavorDimensions "abi"
-    productFlavors {
-        // abi flavors
-        arm64v8a {
-            dimension "abi"
-        }
-
-        amd64 {
-            dimension "abi"
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -90,11 +78,6 @@ dependencies {
     implementation project(":feature:model")
     implementation project(":feature:repository")
     implementation project(":feature:core")
-
-    // グロナビSDK
-    arm64v8aImplementation project(':navi-device')
-    amd64Implementation project(':navi-emulator')
-    implementation project(':navi-author')
 
     // Mapbox
     implementation Dep.Mapbox.mapbox
