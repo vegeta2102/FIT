@@ -15,6 +15,12 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="jp.co.vegeta.fit.MainFragment">
-
+        <action
+            android:id="@+id/action_to_wifi"
+            app:destination="@id/wifiFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/wifiFragment"
+        android:name="jp.co.vegeta.fit.WifiFragment" />
 </navigation>

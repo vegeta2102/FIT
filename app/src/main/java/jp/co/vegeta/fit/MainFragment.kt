@@ -57,6 +57,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 })
                 itemAnimator = null
             }
+            binding.wifiSetting.setOnClickListener {
+                navigation.navigate(R.id.action_to_wifi)
+            }
         }
     }
 }
