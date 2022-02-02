@@ -28,6 +28,7 @@ object Dep {
         const val appCompat = "androidx.appcompat:appcompat:1.2.0"
         const val recyclerView = "androidx.recyclerview:recyclerview:1.1.0"
         const val cardView = "androidx.cardview:cardview:1.0.0"
+        const val gridLayout = "androidx.gridlayout:gridlayout:1.0.0"
         const val constraint = "androidx.constraintlayout:constraintlayout:2.0.4"
         const val design = "com.google.android.material:material:1.2.1"
         const val fragment = "androidx.fragment:fragment:1.3.0-rc01"

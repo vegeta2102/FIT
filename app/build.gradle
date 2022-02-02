@@ -96,6 +96,8 @@ dependencies {
     implementation Dep.AndroidX.appCompat
     implementation Dep.AndroidX.design
     implementation Dep.AndroidX.constraint
+    implementation Dep.AndroidX.gridLayout
+
 
     implementation Dep.AndroidX.lifecycleExtensions
     implementation Dep.AndroidX.lifecycleLiveDataKtx

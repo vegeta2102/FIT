@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/fragment_blank_content.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_test.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_address.xml" value="0.1" />
+        <entry key="feature/core/src/main/res/drawable/drawable_address_area.xml" value="0.298" />
         <entry key="feature/startup/src/main/res/layout/fragment_startup.xml" value="0.14994934143870314" />
       </map>
     </option>
