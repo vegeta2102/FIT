@@ -24,6 +24,12 @@ object Dep {
         const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.30.1-alpha"
     }
 
+    object Groupie {
+        const val groupie = "com.github.lisawray.groupie:groupie:2.8.0"
+        const val groupieDatabinding = "com.github.lisawray.groupie:groupie-databinding:2.8.0"
+        const val groupieViewbinding = "com.github.lisawray.groupie:groupie-viewbinding:2.8.0"
+    }
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.2.0"
         const val recyclerView = "androidx.recyclerview:recyclerview:1.1.0"

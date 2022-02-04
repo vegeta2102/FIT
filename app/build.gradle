@@ -90,6 +90,10 @@ dependencies {
     implementation Dep.PermissionsDispatcher.permissionsDispatcher
     kapt Dep.PermissionsDispatcher.processor
 
+    // Groupie
+    implementation Dep.Groupie.groupie
+    implementation Dep.Groupie.groupieDatabinding
+    implementation Dep.Groupie.groupieViewbinding
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx
