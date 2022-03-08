@@ -120,7 +120,6 @@ dependencies {
 
     // Hilt-Dagger
     implementation Dep.Dagger.hilt
-    implementation Dep.Dagger.hiltViewModel
     kapt Dep.Dagger.hiltAndroidCompiler
     kapt Dep.Dagger.hiltCompiler
 

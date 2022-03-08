@@ -20,8 +20,41 @@ object Dep {
 
     object GradlePlugin {
         const val android = "com.android.tools.build:gradle:4.1.2"
-        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
-        const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.30.1-alpha"
+        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.0"
+        const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.38.1"
+    }
+
+    object Kotlin {
+        const val stdlibJvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0"
+        const val reflection = "org.jetbrains.kotlin:kotlin-reflect:1.5.0"
+
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
+        const val androidCoroutinesDispatcher =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
+        const val coroutinesRx2 =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.4.3"
+        const val coroutinesPlayServices =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.3"
+        const val coroutinesGuava =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.4.3"
+        const val coroutinesTest =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3"
+    }
+
+    object Dagger {
+        const val core = "com.google.dagger:dagger:2.41"
+        const val compiler = "com.google.dagger:dagger-compiler:2.41"
+        const val android = "com.google.dagger:dagger-android:2.41"
+        const val androidSupport = "com.google.dagger:dagger-android-support:2.41"
+        const val processor = "com.google.dagger:dagger-android-processor:2.41"
+
+        const val assistedAnnotations =
+            "com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2"
+        const val assistedProcessor = "com.squareup.inject:assisted-inject-processor-dagger2:0.5.2"
+
+        const val hilt = "com.google.dagger:hilt-android:2.38.1"
+        const val hiltAndroidCompiler = "androidx.hilt:hilt-compiler:1.0.0"
+        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.38.1"
     }
 
     object Groupie {
@@ -85,23 +118,6 @@ object Dep {
         const val playServiceVision = "com.google.android.gms:play-services-vision:10.0.0"
     }
 
-    object Kotlin {
-        const val stdlibJvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21"
-        const val reflection = "org.jetbrains.kotlin:kotlin-reflect:1.4.21"
-
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
-        const val androidCoroutinesDispatcher =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
-        const val coroutinesRx2 =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.4.3"
-        const val coroutinesPlayServices =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.3"
-        const val coroutinesGuava =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.4.3"
-        const val coroutinesTest =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3"
-    }
-
     object RxJava {
         const val core = "io.reactivex.rxjava2:rxjava:2.2.19"
         const val android = "io.reactivex.rxjava2:rxandroid:2.1.1"
@@ -110,23 +126,6 @@ object Dep {
         const val replay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
         const val androidBle = "com.polidea.rxandroidble2:rxandroidble:1.11.1"
         const val debug = "com.akaita.java:rxjava2-debug:1.4.0"
-    }
-
-    object Dagger {
-        const val core = "com.google.dagger:dagger:2.28.1"
-        const val compiler = "com.google.dagger:dagger-compiler:2.28.1"
-        const val android = "com.google.dagger:dagger-android:2.28.1"
-        const val androidSupport = "com.google.dagger:dagger-android-support:2.28.1"
-        const val processor = "com.google.dagger:dagger-android-processor:2.28.1"
-
-        const val assistedAnnotations =
-            "com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2"
-        const val assistedProcessor = "com.squareup.inject:assisted-inject-processor-dagger2:0.5.2"
-
-        const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
-        const val hilt = "com.google.dagger:hilt-android:2.31.1-alpha"
-        const val hiltAndroidCompiler = "androidx.hilt:hilt-compiler:1.0.0-alpha02"
-        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.30.1-alpha"
     }
 
     @Suppress("unused")

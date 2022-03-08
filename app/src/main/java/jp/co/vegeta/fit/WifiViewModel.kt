@@ -1,25 +1,17 @@
 package jp.co.vegeta.fit
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Created by vegeta on 2022/02/02.
  */
-class WifiViewModel @ViewModelInject constructor() : ViewModel() {
+@HiltViewModel
+class WifiViewModel @Inject constructor() : ViewModel() {
 
     val keyword = MutableStateFlow<String?>(null)
     private val _wifiList = MutableLiveData<List<WifiItem>>(emptyList())
