@@ -89,17 +89,17 @@ object Dep {
         const val stdlibJvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21"
         const val reflection = "org.jetbrains.kotlin:kotlin-reflect:1.4.21"
 
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
         const val androidCoroutinesDispatcher =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.0"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
         const val coroutinesRx2 =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.4.0"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.4.3"
         const val coroutinesPlayServices =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.0"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.3"
         const val coroutinesGuava =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.4.0"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.4.3"
         const val coroutinesTest =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.0"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3"
     }
 
     object RxJava {

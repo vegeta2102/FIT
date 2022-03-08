@@ -2,7 +2,9 @@ package jp.co.vegeta
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.random.Random
@@ -28,12 +30,21 @@ class PublishStatusRepositoryImpl @Inject constructor() : PublishStatusRepositor
         }
     }
 
-    override fun test(): String {
-        randomNumber = Random.nextInt()
+    override suspend fun test(): String {
+        /*randomNumber = Random.nextInt()
         if (randomNumber % 2 == 0) {
             return randomNumber.toString()
         } else {
             throw Exception("Hello")
+        }*/
+        for (i in 1..3) {
+            delay(30L)
+            _tokenError.emit(Unit)
         }
+        return ""
     }
+
+    private val _tokenError: MutableSharedFlow<Unit> = MutableSharedFlow(replay = 0)
+    override val tokenError: SharedFlow<Unit>
+        get() = _tokenError
 }

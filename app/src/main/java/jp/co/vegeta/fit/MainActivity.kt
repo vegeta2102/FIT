@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             lifecycleOwner = this@MainActivity
             viewModel = this@MainActivity.mainViewModel
         }
+        mainViewModel.initObserve()
         with(viewModel) {
             initFinished.observe(this@MainActivity) {
                 Timber.d("Init Finished")

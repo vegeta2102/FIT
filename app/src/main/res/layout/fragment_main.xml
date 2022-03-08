@@ -96,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/drawable_button"
+            android:onClick="@{() -> viewModel.buttonWifiSetting()}"
             android:text="WIFI"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
