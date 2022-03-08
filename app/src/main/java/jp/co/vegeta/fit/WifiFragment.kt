@@ -1,17 +1,16 @@
 package jp.co.vegeta.fit
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import androidx.appcompat.widget.SearchView
+import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
-import androidx.core.widget.doAfterTextChanged
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +20,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import timber.log.Timber
+
 
 /**
  * Created by vegeta on 2022/02/02.
@@ -37,6 +37,11 @@ class WifiFragment : Fragment(R.layout.fragment_wifi) {
             it.viewModel = wifiViewModel
             initView(it)
         }
+    }
+
+    fun View.hideSoftInput() {
+        val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.showSoftInput(this, 1)
     }
 
     private fun initView(binding: FragmentWifiBinding) {
