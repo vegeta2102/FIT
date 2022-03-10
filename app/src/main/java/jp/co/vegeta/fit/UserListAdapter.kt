@@ -1,6 +1,5 @@
 package jp.co.vegeta.fit
 
-import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
@@ -15,7 +14,7 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import jp.co.vegeta.fit.databinding.ItemWifiBinding
+import jp.co.vegeta.fit.databinding.ItemUserBinding
 import timber.log.Timber
 import java.util.*
 
@@ -24,26 +23,26 @@ import java.util.*
  * Created by vegeta on 2022/02/02.
  */
 
-private object DiffCallbackWifi : DiffUtil.ItemCallback<WifiItem>() {
-    override fun areItemsTheSame(oldItem: WifiItem, newItem: WifiItem): Boolean {
+private object DiffCallbackWifi : DiffUtil.ItemCallback<UserItem>() {
+    override fun areItemsTheSame(oldItem: UserItem, newItem: UserItem): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: WifiItem, newItem: WifiItem): Boolean {
+    override fun areContentsTheSame(oldItem: UserItem, newItem: UserItem): Boolean {
         return oldItem == newItem
     }
 }
 
-class WifiListAdapter : ListAdapter<WifiItem, WifiListAdapter.ViewHolder>(DiffCallbackWifi),
+class UserListAdapter : ListAdapter<UserItem, UserListAdapter.ViewHolder>(DiffCallbackWifi),
     Filterable {
     var queryText: String = ""
 
     class ViewHolder(
-        private val binding: ItemWifiBinding,
+        private val binding: ItemUserBinding,
         private val queryText: String
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(wifiItem: WifiItem) {
-            val ssid = wifiItem.text
+        fun bind(userItem: UserItem) {
+            val ssid = userItem.text
             if (queryText.isNotEmpty()) {
                 Timber.d("Vegeta bind $queryText")
                 val startPos: Int = ssid.toLowerCase().indexOf(queryText.toLowerCase())
@@ -66,7 +65,7 @@ class WifiListAdapter : ListAdapter<WifiItem, WifiListAdapter.ViewHolder>(DiffCa
                     binding.ssid.text = ssid
                 }
             } else {
-                binding.ssid.text = wifiItem.text
+                binding.ssid.text = userItem.text
             }
         }
     }
@@ -74,7 +73,7 @@ class WifiListAdapter : ListAdapter<WifiItem, WifiListAdapter.ViewHolder>(DiffCa
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(
-            ItemWifiBinding.inflate(layoutInflater, parent, false),
+            ItemUserBinding.inflate(layoutInflater, parent, false),
             queryText
         )
     }
@@ -87,7 +86,7 @@ class WifiListAdapter : ListAdapter<WifiItem, WifiListAdapter.ViewHolder>(DiffCa
         return object : Filter() {
             override fun performFiltering(inputText: CharSequence?): FilterResults {
                 Timber.d("Vegeta performFiltering inputText ${inputText?.toString()} Current list: $currentList")
-                val newList = mutableListOf<WifiItem>()
+                val newList = mutableListOf<UserItem>()
                 if (inputText?.isNotEmpty() == true) {
                     queryText = inputText.toString()
                     currentList.forEach {
@@ -107,9 +106,9 @@ class WifiListAdapter : ListAdapter<WifiItem, WifiListAdapter.ViewHolder>(DiffCa
             override fun publishResults(inputText: CharSequence?, filterResults: FilterResults?) {
                 Timber.d("Vegeta publishResults ${filterResults?.values}")
                 if (filterResults != null && filterResults.count > 0) {
-                    val list = filterResults.values as? List<WifiItem>
+                    val list = filterResults.values as? List<UserItem>
                     submitList(list)
-                    notifyDataSetChanged()
+                    // notifyDataSetChanged()
                 }
             }
         }

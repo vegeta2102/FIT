@@ -1,21 +1,17 @@
 package jp.co.vegeta.fit
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import jp.co.vegeta.fit.databinding.FragmentWifiBinding
+import jp.co.vegeta.fit.databinding.FragmentSearchBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
@@ -26,25 +22,20 @@ import timber.log.Timber
  * Created by vegeta on 2022/02/02.
  */
 @AndroidEntryPoint
-class WifiFragment : Fragment(R.layout.fragment_wifi) {
+class SearchFragment : Fragment(R.layout.fragment_search) {
 
-    private val wifiViewModel: WifiViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FragmentWifiBinding.bind(view).also {
+        FragmentSearchBinding.bind(view).also {
             it.lifecycleOwner = viewLifecycleOwner
-            it.viewModel = wifiViewModel
+            it.viewModel = searchViewModel
             initView(it)
         }
     }
 
-    fun View.hideSoftInput() {
-        val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.showSoftInput(this, 1)
-    }
-
-    private fun initView(binding: FragmentWifiBinding) {
+    private fun initView(binding: FragmentSearchBinding) {
         with(binding.recyclerViewWifiList) {
             layoutManager =
                 object : LinearLayoutManager(context, RecyclerView.VERTICAL, false) {
@@ -52,13 +43,12 @@ class WifiFragment : Fragment(R.layout.fragment_wifi) {
                         return false
                     }
                 }
-            adapter = WifiListAdapter().also { adapter ->
-                wifiViewModel.wifiList.observe(viewLifecycleOwner) {
+            adapter = UserListAdapter().also { adapter ->
+                searchViewModel.userList.observe(viewLifecycleOwner) {
                     adapter.submitList(it)
                 }
                 lifecycleScope.launch {
-                    wifiViewModel.keyword.filterNotNull().collect {
-                        Timber.d("Vegeta keyword $it")
+                    searchViewModel.keyword.filterNotNull().collect {
                         adapter.filter.filter(it)
                     }
                 }
@@ -73,10 +63,20 @@ class WifiFragment : Fragment(R.layout.fragment_wifi) {
             itemAnimator = null
         }
         with(binding) {
-            inputSearch.doOnTextChanged { text, start, before, count ->
-                Timber.d("Vegeta Text: $text, Start $start, Before $before Count $count")
-                wifiViewModel.updateKeyword(text.toString())
-            }
+            this.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    searchView.clearFocus()
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    newText?.let {
+                        Timber.d("Vegeta newText ${it}")
+                        searchViewModel.updateKeyword(it)
+                    }
+                    return false
+                }
+            })
         }
     }
 }

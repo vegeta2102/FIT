@@ -22,5 +22,5 @@
 
     <fragment
         android:id="@+id/wifiFragment"
-        android:name="jp.co.vegeta.fit.WifiFragment" />
+        android:name="jp.co.vegeta.fit.SearchFragment" />
 </navigation>
