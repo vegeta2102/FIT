@@ -5,10 +5,8 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TextAppearanceSpan
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.view.View
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.vegeta.core.extentions.ResourceProvider
 import jp.co.vegeta.model.UserItem
@@ -33,6 +31,14 @@ class SearchViewModel @Inject constructor(
 
     private val _userList = MutableLiveData<List<UserItem>>(emptyList())
     val userList: LiveData<List<UserItem>> = _userList
+
+    val dataNotFoundVisibility: LiveData<Int> = _userList.map {
+        if (it.isEmpty()) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
 
     private val originUserList = mutableListOf<UserItem>()
 

@@ -26,7 +26,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:queryHint="Find username..." />
+            app:queryHint="Find president..." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Data Not Found"
+            android:textSize="20sp"
+            android:visibility="@{viewModel.dataNotFoundVisibility}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_wifi_list"
