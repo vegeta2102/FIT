@@ -46,13 +46,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 }
             adapter = UserListAdapter(searchViewModel)
 
-            addItemDecoration(
+            /*addItemDecoration(
                 DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL).apply {
                     ContextCompat.getDrawable(requireContext(), R.drawable.divider_4dp)?.let {
                         setDrawable(it)
                     }
                 }
-            )
+            )*/
             itemAnimator = null
         }
         with(binding) {
