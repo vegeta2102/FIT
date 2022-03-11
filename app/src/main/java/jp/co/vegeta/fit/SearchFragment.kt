@@ -64,7 +64,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     newText?.let {
-                        Timber.d("Vegeta newText ${it}")
                         searchViewModel.updateKeyword(it)
                     }
                     return false

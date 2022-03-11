@@ -32,14 +32,9 @@ class UserListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(
-            //ItemUserBinding.inflate(layoutInflater, parent, false),
-            DataBindingUtil.inflate(layoutInflater, viewType, parent, false),
+            ItemUserBinding.inflate(layoutInflater, parent, false),
             searchViewModel
         )
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return R.layout.item_user
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
