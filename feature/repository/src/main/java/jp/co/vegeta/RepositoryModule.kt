@@ -21,8 +21,8 @@ internal abstract class RepositoryModule {
     companion object {
         @Provides
         @Singleton
-        fun provideUserRepository(): UserRepository {
-            return UserRepositoryImpl()
+        fun provideUserRepository(resourceProvider: ResourceProvider): UserRepository {
+            return UserRepositoryImpl(resourceProvider)
         }
 
         @Provides

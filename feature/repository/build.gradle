@@ -74,7 +74,7 @@ dependencies {
 
     // Other
     implementation Dep.timber
-
+    implementation Dep.gson
     // Test
     testImplementation Dep.Test.JUnit.junit4
     testImplementation Dep.Test.JUnit.api

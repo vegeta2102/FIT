@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import jp.co.vegeta.user.UserRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -14,7 +15,9 @@ import javax.inject.Inject
  * Created by vegeta on 2021/01/23.
  */
 @HiltViewModel
-class StartupViewModel @Inject constructor() : ViewModel() {
+class StartupViewModel @Inject constructor(
+    private val userRepository: UserRepository
+) : ViewModel() {
 
     companion object {
         val TAG = StartupViewModel::class.simpleName
@@ -26,9 +29,15 @@ class StartupViewModel @Inject constructor() : ViewModel() {
 
     fun initialize() {
         viewModelScope.launch {
-            delay(3000L)
-            Timber.d("Initialize")
-            mutableInitFinished.postValue(Unit)
+            runCatching {
+                userRepository.fetch()
+            }.onSuccess {
+                // FIXME
+                delay(2000L)
+                mutableInitFinished.postValue(Unit)
+            }.onFailure {
+                Timber.e("Loading failure $it")
+            }
         }
     }
 }

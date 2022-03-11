@@ -132,6 +132,8 @@ object Dep {
     @Suppress("unused")
     const val timber = "com.jakewharton.timber:timber:4.7.1"
 
+    const val gson = "com.google.code.gson:gson:2.8.5"
+
     @Suppress("unused")
     object PermissionsDispatcher {
         const val permissionsDispatcher =

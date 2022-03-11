@@ -19,4 +19,6 @@ interface ResourceProvider {
     fun getRawFileDescriptor(@RawRes resId: Int): AssetFileDescriptor
 
     fun getColorStateList(@ColorRes color: Int): ColorStateList
+
+    fun loadJson(fileName: String): String?
 }

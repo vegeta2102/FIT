@@ -6,6 +6,7 @@ import android.content.res.ColorStateList
 import androidx.annotation.DimenRes
 import androidx.annotation.IntegerRes
 import androidx.core.content.ContextCompat
+import timber.log.Timber
 
 /**
  * Created by vegeta on 2020/11/24.
@@ -32,4 +33,15 @@ class ResourceProviderImpl(private val context: Context) :
 
     override fun getColorStateList(color: Int): ColorStateList =
         context.getColorStateList(color)
+
+    override fun loadJson(fileName: String): String? {
+        return try {
+            context.assets.open(fileName).bufferedReader().use {
+                it.readText()
+            }
+        } catch (e: Exception) {
+            Timber.e("Json reading : $e")
+            null
+        }
+    }
 }

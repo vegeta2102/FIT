@@ -8,9 +8,16 @@ import android.text.style.TextAppearanceSpan
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.vegeta.core.extentions.ResourceProvider
 import jp.co.vegeta.model.UserItem
+import jp.co.vegeta.user.UserRepository
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -20,34 +27,27 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val resourceProvider: ResourceProvider
+    private val resourceProvider: ResourceProvider,
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
     private val _userList = MutableLiveData<List<UserItem>>(emptyList())
     val userList: LiveData<List<UserItem>> = _userList
 
-    private val originUserList = mutableListOf<UserItem>().apply {
-        add(UserItem("Nguyen Van A"))
-        add(UserItem("Nguyen Vang B"))
-        add(UserItem("Nguyen Si Luan"))
-        add(UserItem("Nguyen China"))
-        add(UserItem("Tran Japan"))
-        add(UserItem("Nguyen The United State of America"))
-        add(UserItem("England"))
-        add(UserItem("France"))
-        add(UserItem("Germany"))
-        add(UserItem("Russia"))
-        add(UserItem("Vladimir Putin"))
-        add(UserItem("Barack Obama"))
-        add(UserItem("Hong Min Choi"))
-    }
+    private val originUserList = mutableListOf<UserItem>()
 
     init {
-        initAdapter()
-    }
-
-    private fun initAdapter() {
-        _userList.postValue(originUserList)
+        viewModelScope.launch {
+            userRepository.data.map {
+                val userItemList = it.map { president ->
+                    UserItem(president.name)
+                }
+                userItemList
+            }.collect {
+                originUserList.addAll(it)
+                _userList.postValue(it)
+            }
+        }
     }
 
     fun updateKeyword(filter: String) {
