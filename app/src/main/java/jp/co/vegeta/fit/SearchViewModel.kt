@@ -51,22 +51,18 @@ class SearchViewModel @Inject constructor(
     }
 
     fun updateKeyword(filter: String) {
-        val list = if (filter.trim().isNotEmpty()) {
-            mutableListOf<UserItem>().apply {
-                originUserList.forEach {
-                    val regex = Regex(filter.lowercase(Locale.getDefault()))
-                    if (regex.containsMatchIn(it.text.lowercase(Locale.getDefault()))) {
-                        add(
-                            UserItem(
-                                text = it.text,
-                                spanText = htmlColorText(it.text, filter)
-                            )
+        val list = mutableListOf<UserItem>().apply {
+            originUserList.forEach {
+                val regex = Regex(filter.lowercase(Locale.getDefault()))
+                if (regex.containsMatchIn(it.text.lowercase(Locale.getDefault()))) {
+                    add(
+                        UserItem(
+                            text = it.text,
+                            spanText = htmlColorText(it.text, filter)
                         )
-                    }
+                    )
                 }
             }
-        } else {
-            originUserList
         }
         _userList.value = list
     }
