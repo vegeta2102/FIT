@@ -8,19 +8,11 @@
         android:id="@+id/startupFragment"
         android:name="jp.co.vegeta.startup.StartupFragment">
         <action
-            android:id="@+id/action_to_main"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_to_search"
+            app:destination="@id/searchFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="jp.co.vegeta.fit.MainFragment">
-        <action
-            android:id="@+id/action_to_wifi"
-            app:destination="@id/wifiFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/wifiFragment"
+        android:id="@+id/searchFragment"
         android:name="jp.co.vegeta.fit.SearchFragment" />
 </navigation>

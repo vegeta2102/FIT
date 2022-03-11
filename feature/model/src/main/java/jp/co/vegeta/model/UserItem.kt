@@ -1,4 +1,4 @@
-package jp.co.vegeta.fit
+package jp.co.vegeta.model
 
 import android.text.Spannable
 

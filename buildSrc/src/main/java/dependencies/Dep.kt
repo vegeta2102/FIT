@@ -5,19 +5,6 @@ package dependencies
  */
 
 object Dep {
-    object Mapbox {
-        const val mapbox = "com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.2"
-    }
-
-    @Suppress("unused")
-    object Mot {
-        const val version = "1.1.43"
-        const val map = "app.mobilitytechnologies.lib:lib-map:$version"
-        const val navi = "app.mobilitytechnologies.lib:lib-navi:$version"
-        const val naviFlow = "app.mobilitytechnologies.lib:lib-navi-flow:$version"
-        const val globalNavi = "app.mobilitytechnologies.lib:lib-globalnavi:$version"
-    }
-
     object GradlePlugin {
         const val android = "com.android.tools.build:gradle:4.1.2"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.0"

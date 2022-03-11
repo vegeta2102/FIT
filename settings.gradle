@@ -3,5 +3,4 @@ include ':feature:model'
 include ':feature:repository'
 include ':feature:startup'
 include ':feature:core'
-include ':feature:mapbox'
 rootProject.name = "FIT"

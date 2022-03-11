@@ -79,9 +79,6 @@ dependencies {
     implementation project(":feature:repository")
     implementation project(":feature:core")
 
-    // Mapbox
-    implementation Dep.Mapbox.mapbox
-
     // Google
     implementation Dep.Google.playService
     implementation Dep.Google.playServiceVision
@@ -131,10 +128,6 @@ dependencies {
 
     // Other
     implementation Dep.timber
-    implementation Dep.Mot.map
-    implementation Dep.Mot.navi
-    implementation Dep.Mot.naviFlow
-    implementation Dep.Mot.globalNavi
 
     // Test
     testImplementation Dep.Test.JUnit.junit4

@@ -10,7 +10,7 @@
 
         <variable
             name="item"
-            type="jp.co.vegeta.fit.UserItem" />
+            type="jp.co.vegeta.model.UserItem" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

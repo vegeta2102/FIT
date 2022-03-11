@@ -2,10 +2,10 @@ package jp.co.vegeta.fit
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.vegeta.core.extentions.BindableAdapter
 import jp.co.vegeta.fit.databinding.ItemUserBinding
+import jp.co.vegeta.model.UserItem
 
 
 /**
