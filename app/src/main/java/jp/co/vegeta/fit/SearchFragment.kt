@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,16 +44,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                         return false
                     }
                 }
-            adapter = UserListAdapter().also { adapter ->
-                searchViewModel.userList.observe(viewLifecycleOwner) {
-                    adapter.submitList(it)
-                }
-                lifecycleScope.launch {
-                    searchViewModel.keyword.filterNotNull().collect {
-                        adapter.filter.filter(it)
-                    }
-                }
-            }
+            adapter = UserListAdapter(searchViewModel)
+
             addItemDecoration(
                 DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL).apply {
                     ContextCompat.getDrawable(requireContext(), R.drawable.divider_4dp)?.let {

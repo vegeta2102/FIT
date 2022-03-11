@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="jp.co.vegeta.fit.SearchViewModel" />
+
+        <variable
+            name="item"
+            type="jp.co.vegeta.fit.UserItem" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -11,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:text="@{item.spanText == null ? item.text : item.spanText}"
+            android:textColor="@color/text_white"
             android:textSize="20sp"
             tools:text="Hello" />
     </androidx.constraintlayout.widget.ConstraintLayout>
