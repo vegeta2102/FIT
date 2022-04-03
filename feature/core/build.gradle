@@ -65,6 +65,7 @@ dependencies {
     // Other
     implementation Dep.timber
     implementation Dep.gson
+    implementation Dep.Jetpack.DataStore.core
     // Test
     testImplementation Dep.Test.JUnit.junit4
     testImplementation Dep.Test.JUnit.api

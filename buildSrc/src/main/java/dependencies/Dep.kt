@@ -134,6 +134,12 @@ object Dep {
 
     const val gson = "com.google.code.gson:gson:2.8.5"
 
+    object Jetpack {
+        object DataStore {
+            const val core = "androidx.datastore:datastore-preferences:1.0.0"
+        }
+    }
+
     @Suppress("unused")
     object PermissionsDispatcher {
         const val permissionsDispatcher =

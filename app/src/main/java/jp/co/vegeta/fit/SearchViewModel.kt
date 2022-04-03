@@ -8,7 +8,11 @@ import android.text.style.TextAppearanceSpan
 import android.view.View
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import jp.co.vegeta.core.extentions.DataStoreKey
 import jp.co.vegeta.core.extentions.ResourceProvider
+import jp.co.vegeta.core.extentions.get
+import jp.co.vegeta.datastore.LocalDataStore
+import jp.co.vegeta.model.President
 import jp.co.vegeta.model.UserItem
 import jp.co.vegeta.user.UserRepository
 import kotlinx.coroutines.flow.collect
@@ -26,7 +30,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val localDataStore: LocalDataStore
 ) : ViewModel() {
 
     private val _userList = MutableLiveData<List<UserItem>>(emptyList())
@@ -44,6 +49,22 @@ class SearchViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            Timber.d(
+                "Vegeta datastore : ${
+                    localDataStore.dataStore.get(
+                        DataStoreKey.KEY_MISYU_FROM_WIFI_METER_RECEIVE,
+                        ""
+                    )
+                }"
+            )
+            Timber.d(
+                "Vegeta datastore object : ${
+                    localDataStore.dataStore.get(
+                        DataStoreKey.KEY_OBJECT_TEST,
+                        null
+                    )
+                }"
+            )
             userRepository.data.map {
                 val userItemList = it.map { president ->
                     UserItem(president.name)
