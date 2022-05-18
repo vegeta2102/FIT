@@ -10,9 +10,16 @@
         <action
             android:id="@+id/action_to_search"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_to_suggest_search"
+            app:destination="@id/suggestSearchFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="jp.co.vegeta.fit.SearchFragment" />
+
+    <fragment
+        android:id="@+id/suggestSearchFragment"
+        android:name="jp.co.vegeta.fit.suggest_search.SuggestSearchFragment" />
 </navigation>
