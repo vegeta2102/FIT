@@ -68,34 +68,24 @@ class SuggestSearchFragment : Fragment(R.layout.fragment_suggest_search) {
 
         binding.previous.setOnClickListener {
             if (suggestionLayoutManager.findFirstCompletelyVisibleItemPosition() > 0) {
-                suggestionLayoutManager.smoothScrollToPosition(
-                    binding.recyclerViewWifiList,
-                    null,
-                    suggestionLayoutManager.findFirstCompletelyVisibleItemPosition() - 1
-                )
+                suggestionLayoutManager.scrollToPosition(suggestionLayoutManager.findFirstCompletelyVisibleItemPosition() - 1)
             }
         }
 
         binding.next.setOnClickListener {
             if (suggestionLayoutManager.findLastCompletelyVisibleItemPosition() < suggestListAdapter.itemCount) {
-                suggestionLayoutManager.smoothScrollToPosition(
-                    binding.recyclerViewWifiList,
-                    null,
-                    suggestionLayoutManager.findLastCompletelyVisibleItemPosition() + 1
-                )
+                suggestionLayoutManager.scrollToPosition(suggestionLayoutManager.findLastCompletelyVisibleItemPosition() + 1)
             }
         }
 
-        binding.recyclerViewWifiList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            @Override
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                // Detect leading of the List
-                binding.previous.isEnabled = recyclerView.canScrollHorizontally(-1)
-                // Detect trailing of the List
-                binding.next.isEnabled = recyclerView.canScrollHorizontally(1)
-            }
-        })
+        binding.recyclerViewWifiList.addOnLayoutChangeListener { view, i, i2, i3, i4, i5, i6, i7, i8 ->
+            binding.previous.isEnabled =
+                (suggestionLayoutManager.findFirstVisibleItemPosition() == 0
+                        && suggestionLayoutManager.findFirstCompletelyVisibleItemPosition() == 0).not()
+            binding.next.isEnabled =
+                (suggestionLayoutManager.findLastVisibleItemPosition() == suggestListAdapter.itemCount - 1
+                        && suggestionLayoutManager.findLastCompletelyVisibleItemPosition() == suggestListAdapter.itemCount - 1).not()
+        }
 
         suggestSearchViewModel.userList.observe(viewLifecycleOwner) {
             suggestListAdapter.submitList(it)

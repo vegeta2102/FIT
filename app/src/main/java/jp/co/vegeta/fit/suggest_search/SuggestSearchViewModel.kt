@@ -19,16 +19,18 @@ class SuggestSearchViewModel @Inject constructor() : ViewModel(), LifecycleObser
     fun init() {
         _userList.postValue(
             listOf(
-                "Vu",
-                "Minh",
-                "Hoang",
-                "Le",
-                "Thi",
-                "Lan",
-                "Huong",
-                "Hoi",
-                "Beo"
-            )
+                "Vu123",
+                "Vu1",
+                "VuVeveveve",
+                "Minh12",
+                "HoangHoangHoanghuoang",
+                "LeAB",
+                "ThiAA",
+                "LanB",
+                "Huongasdf",
+                "Hoiasd",
+                "Beoasdf"
+            ).distinct()
         )
     }
 }

@@ -18,7 +18,7 @@
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:textColor="@color/text_white"
-            android:textSize="22sp"
+            android:textSize="18sp"
             tools:text="六本木ヒルズ" />
 
     </LinearLayout>
