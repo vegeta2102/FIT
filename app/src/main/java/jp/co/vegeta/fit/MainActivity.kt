@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
         with(viewModel) {
             initFinished.observe(this@MainActivity) {
                 Timber.d("Init Finished")
-                // navController.navigate(R.id.action_to_search)
-                navController.navigate(R.id.action_to_suggest_search)
+                navController.navigate(R.id.action_to_search)
+                // navController.navigate(R.id.action_to_suggest_search)
             }
         }
     }
