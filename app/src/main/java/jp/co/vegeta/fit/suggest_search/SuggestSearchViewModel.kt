@@ -1,22 +1,52 @@
 package jp.co.vegeta.fit.suggest_search
 
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import jp.co.vegeta.user.RegularCheckActiveRepository
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.distinctUntilChangedBy
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * Created by vegeta on 2022/05/18.
  */
 @HiltViewModel
-class SuggestSearchViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
+class SuggestSearchViewModel @Inject constructor(
+    private val regularCheckActiveRepository: RegularCheckActiveRepository
+) : ViewModel(), LifecycleObserver {
 
     private val _userList = MutableLiveData<List<String>>()
     val userList: LiveData<List<String>> = _userList
 
+    private val _searchQueryText = MutableLiveData("")
+    val searchQueryText: LiveData<String> =
+        _searchQueryText.map { it.trimStart() }.distinctUntilChanged()
+
+    private var job: Job? = null
+    private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+
     fun init() {
+        viewModelScope.launch {
+            regularCheckActiveRepository.check()
+        }
+        viewModelScope.launch {
+            try {
+                withTimeout(5000L) {
+                    delay(6000L)
+                    viewModelScope.launch {
+                        regularCheckActiveRepository.data.collect {
+                            Timber.d("Vegeta value $it")
+                        }
+                    }
+                }
+            } catch (e: TimeoutCancellationException) {
+                Timber.d("Vegeta timeout")
+            }
+
+        }
         _userList.postValue(
             listOf(
                 "Vu123",
@@ -31,6 +61,37 @@ class SuggestSearchViewModel @Inject constructor() : ViewModel(), LifecycleObser
                 "Hoiasd",
                 "Beoasdf"
             ).distinct()
+        )
+    }
+
+    private fun startCheck() {
+        viewModelScope.launch {
+            Timber.d("Vegeta start check")
+            regularCheckActiveRepository.data.distinctUntilChanged().collect {
+                Timber.d("Vegeta $it")
+            }
+            /*try {
+                withTimeout(2000L) {
+                    regularCheckActiveRepository.data.collect {
+                        Timber.d("Vegeta $it")
+                    }
+                }
+            } catch (e: TimeoutCancellationException) {
+                Timber.d("Vegeta timeout")
+            }*/
+        }
+    }
+
+    fun selectPadKey() {
+        _searchQueryText.postValue(
+            _searchQueryText.value?.plus("A")
+        )
+    }
+
+    fun delete() {
+        val currentText = _searchQueryText.value.takeIf { it.isNullOrEmpty().not() } ?: return
+        _searchQueryText.postValue(
+            currentText.dropLast(1)
         )
     }
 }

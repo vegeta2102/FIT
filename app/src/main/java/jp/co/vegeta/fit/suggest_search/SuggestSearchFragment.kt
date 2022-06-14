@@ -1,8 +1,14 @@
 package jp.co.vegeta.fit.suggest_search
 
+import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.HorizontalScrollView
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import jp.co.vegeta.core.extentions.dp
 import jp.co.vegeta.fit.R
 import jp.co.vegeta.fit.databinding.FragmentSuggestSearchBinding
+import timber.log.Timber
 
 /**
  * Created by vegeta on 2022/05/18.
@@ -27,6 +34,38 @@ class SuggestSearchFragment : Fragment(R.layout.fragment_suggest_search) {
             binding.lifecycleOwner = viewLifecycleOwner
             setupSuggestListAdapter(binding)
             suggestSearchViewModel.init()
+            initView(binding)
+            observeViewModel(binding)
+        }
+    }
+
+    private fun initView(binding: FragmentSuggestSearchBinding) {
+        hideKeyboard()
+        binding.addressArea.isHorizontalScrollBarEnabled = false
+    }
+
+    private fun hideKeyboard() {
+        requireActivity().currentFocus?.let { v ->
+            val imm =
+                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(v.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
+    }
+
+    private fun observeViewModel(binding: FragmentSuggestSearchBinding) {
+        with(suggestSearchViewModel) {
+            searchQueryText.observe(viewLifecycleOwner) {
+                binding.textAddress.setText(it)
+                binding.addressArea.post {
+                    binding.addressArea.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
+                }
+            }
+        }
+
+        binding.textAddress.doOnTextChanged { text, _, _, _ ->
+            if (text.isNullOrEmpty().not()) {
+                binding.textAddress.setSelection(text?.length ?: 0)
+            }
         }
     }
 
