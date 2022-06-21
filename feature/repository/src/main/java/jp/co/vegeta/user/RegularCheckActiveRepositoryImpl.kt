@@ -17,7 +17,7 @@ class RegularCheckActiveRepositoryImpl @Inject constructor() : RegularCheckActiv
 
     override suspend fun check() {
         while (true) {
-            delay(10000L)
+            delay(2000L)
             _data.emit(Random.nextInt())
         }
     }

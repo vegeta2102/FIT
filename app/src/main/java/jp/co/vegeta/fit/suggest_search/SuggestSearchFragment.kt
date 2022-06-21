@@ -41,7 +41,9 @@ class SuggestSearchFragment : Fragment(R.layout.fragment_suggest_search) {
 
     private fun initView(binding: FragmentSuggestSearchBinding) {
         hideKeyboard()
-        binding.addressArea.isHorizontalScrollBarEnabled = false
+        // binding.textAddress.setSelection(0)
+        binding.textAddress.requestFocus()
+        // binding.addressArea.isHorizontalScrollBarEnabled = false
     }
 
     private fun hideKeyboard() {
@@ -56,9 +58,9 @@ class SuggestSearchFragment : Fragment(R.layout.fragment_suggest_search) {
         with(suggestSearchViewModel) {
             searchQueryText.observe(viewLifecycleOwner) {
                 binding.textAddress.setText(it)
-                binding.addressArea.post {
+                /*binding.addressArea.post {
                     binding.addressArea.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
-                }
+                }*/
             }
         }
 

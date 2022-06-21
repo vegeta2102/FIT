@@ -4,9 +4,7 @@ import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.vegeta.user.RegularCheckActiveRepository
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.distinctUntilChangedBy
+import kotlinx.coroutines.flow.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -29,10 +27,11 @@ class SuggestSearchViewModel @Inject constructor(
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
     fun init() {
+        startCheck()
         viewModelScope.launch {
             regularCheckActiveRepository.check()
         }
-        viewModelScope.launch {
+        /*viewModelScope.launch {
             try {
                 withTimeout(5000L) {
                     delay(6000L)
@@ -46,7 +45,7 @@ class SuggestSearchViewModel @Inject constructor(
                 Timber.d("Vegeta timeout")
             }
 
-        }
+        }*/
         _userList.postValue(
             listOf(
                 "Vu123",
@@ -80,11 +79,23 @@ class SuggestSearchViewModel @Inject constructor(
                 Timber.d("Vegeta timeout")
             }*/
         }
+        viewModelScope.launch {
+            regularCheckActiveRepository.data.onEach {
+                Timber.d("Testing ${it *2}")
+            }.launchIn(this)
+        }
     }
 
     fun selectPadKey() {
+        val key = listOf("H", "1", "回", "ロ", "山").random()
         _searchQueryText.postValue(
-            _searchQueryText.value?.plus("A")
+            _searchQueryText.value?.plus(key)
+        )
+    }
+
+    fun selectMoreText() {
+        _searchQueryText.postValue(
+            _searchQueryText.value?.plus("あいAうえお")
         )
     }
 

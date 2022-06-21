@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">FIT</string>
-    <string name="hint">&#160;入力してください</string>
+    <string name="hint">入力してください</string>
 </resources>
