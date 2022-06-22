@@ -1,9 +1,8 @@
 package jp.co.vegeta.user
 
+import android.os.SystemClock
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -20,5 +19,22 @@ class RegularCheckActiveRepositoryImpl @Inject constructor() : RegularCheckActiv
             delay(2000L)
             _data.emit(Random.nextInt())
         }
+    }
+
+    override suspend fun syncMapMarker(): Flow<String> {
+        return flowOf("1", "2", "3", "4").map {
+            delay(5000)
+            it
+        }
+        /*return flow<String> {
+            delay(1000)
+            emit("Test1")
+            delay(1000)
+            emit("Test2")
+            delay(2000)
+            emit("Test3")
+            delay(3000)
+            emit("Test4")
+        }*/
     }
 }

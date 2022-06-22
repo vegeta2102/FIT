@@ -27,7 +27,12 @@ class SuggestSearchViewModel @Inject constructor(
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
     fun init() {
-        startCheck()
+        viewModelScope.launch {
+            regularCheckActiveRepository.syncMapMarker().onEach {
+                Timber.d("Vegeta $it")
+            }.launchIn(this)
+        }
+        // startCheck()
         viewModelScope.launch {
             regularCheckActiveRepository.check()
         }
@@ -81,7 +86,7 @@ class SuggestSearchViewModel @Inject constructor(
         }
         viewModelScope.launch {
             regularCheckActiveRepository.data.onEach {
-                Timber.d("Testing ${it *2}")
+                Timber.d("Testing ${it * 2}")
             }.launchIn(this)
         }
     }
