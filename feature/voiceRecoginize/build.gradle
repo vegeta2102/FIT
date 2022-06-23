@@ -2,7 +2,7 @@ import dependencies.Dep
 import dependencies.Versions
 
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
@@ -14,20 +14,12 @@ android {
     buildToolsVersion Versions.androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "jp.co.vegeta.fit"
         minSdkVersion Versions.androidMinSdkVersion
         targetSdkVersion Versions.androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -40,70 +32,31 @@ android {
     buildFeatures {
         dataBinding true
     }
-
-    lintOptions {
-        abortOnError false
-        checkDependencies true
-        ignoreTestSources true
-
-        disable 'ContentDescription'
-    }
-    packagingOptions {
-        pickFirst 'lib/arm64-v8a/libc++_shared.so'
-        // 以下の問題回避のために除外している
-        // https://github.com/Kotlin/kotlinx.coroutines/issues/2023
-        exclude "**/attach_hotspot_windows.dll"
-        exclude "META-INF/licenses/ASM"
-
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/INDEX.LIST'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.md'
-        exclude 'META-INF/LICENSE-notice.md'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/ASL2.0'
-        exclude 'META-INF/AL2.0'
-        exclude 'META-INF/LGPL2.1'
-        exclude("META-INF/*.kotlin_module")
-    }
 }
 
 dependencies {
-    implementation project(":feature:voiceRecoginize")
-    implementation project(":feature:startup")
+
     implementation project(":feature:model")
     implementation project(":feature:repository")
     implementation project(":feature:core")
-
-    // Google
-    implementation Dep.Google.playService
-    implementation Dep.Google.playServiceVision
-
     // Permission Dispatcher
     implementation Dep.PermissionsDispatcher.permissionsDispatcher
     kapt Dep.PermissionsDispatcher.processor
 
-    // Groupie
-    implementation Dep.Groupie.groupie
-    implementation Dep.Groupie.groupieDatabinding
-    implementation Dep.Groupie.groupieViewbinding
     // Core
     implementation Dep.Kotlin.stdlibJvm
     implementation Dep.AndroidX.coreKtx
     implementation Dep.AndroidX.appCompat
     implementation Dep.AndroidX.design
     implementation Dep.AndroidX.constraint
-    implementation Dep.AndroidX.gridLayout
-
 
     implementation Dep.AndroidX.lifecycleExtensions
     implementation Dep.AndroidX.lifecycleLiveDataKtx
     implementation Dep.AndroidX.lifecycleViewModelKtx
     implementation Dep.AndroidX.lifecycleRuntimeKtx
+
+    // アニメーション
+    implementation Dep.lottie
 
     // Navigation
     implementation Dep.AndroidX.Navigation.common
@@ -120,15 +73,10 @@ dependencies {
     kapt Dep.Dagger.hiltAndroidCompiler
     kapt Dep.Dagger.hiltCompiler
 
-    implementation Dep.RxJava.core
-    implementation Dep.RxJava.android
-    implementation Dep.RxJava.kotlin
-    implementation Dep.RxJava.replay
-    implementation Dep.RxJava.replayingShareKotlin
-
     // Other
     implementation Dep.timber
     implementation Dep.Jetpack.DataStore.core
+
     // Test
     testImplementation Dep.Test.JUnit.junit4
     testImplementation Dep.Test.JUnit.api
@@ -139,7 +87,4 @@ dependencies {
     testImplementation Dep.Test.Mock.mockkAndroid
     testImplementation Dep.Test.Spek.dsl
     testImplementation Dep.Test.Spek.runner
-}
-kapt {
-    correctErrorTypes true
 }

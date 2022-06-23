@@ -25,7 +25,8 @@ class StartupFragment : Fragment(R.layout.fragment_startup) {
     @NeedsPermission(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.RECORD_AUDIO
     )
     fun requestPermission() {
         // パーミッションが許可されていれば起動処理に遷移

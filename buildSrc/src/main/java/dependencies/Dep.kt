@@ -7,7 +7,7 @@ package dependencies
 object Dep {
     object GradlePlugin {
         const val android = "com.android.tools.build:gradle:4.1.2"
-        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.0"
+        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
         const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.38.1"
     }
 
@@ -99,6 +99,9 @@ object Dep {
             const val rxjava = "androidx.work:work-rxjava2:2.3.4"
         }
     }
+
+    @Suppress("unused")
+    const val lottie = "com.airbnb.android:lottie:4.2.0"
 
     object Google {
         const val playService = "com.google.android.gms:play-services:12.0.1"

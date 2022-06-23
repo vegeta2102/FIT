@@ -20,6 +20,7 @@
         <entry key="feature/core/src/main/res/drawable/drawable_address_area.xml" value="0.298" />
         <entry key="feature/core/src/main/res/drawable/searchview_background.xml" value="0.1295" />
         <entry key="feature/startup/src/main/res/layout/fragment_startup.xml" value="0.14994934143870314" />
+        <entry key="feature/voiceRecoginize/src/main/res/layout/fragment_voice_recognize.xml" value="0.2" />
       </map>
     </option>
   </component>
