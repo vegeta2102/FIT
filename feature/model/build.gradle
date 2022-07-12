@@ -32,6 +32,13 @@ android {
     buildFeatures {
         dataBinding true
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src/main/assets'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -61,13 +68,12 @@ dependencies {
 
     // Hilt-Dagger
     implementation Dep.Dagger.hilt
-    implementation Dep.Dagger.hiltViewModel
     kapt Dep.Dagger.hiltAndroidCompiler
     kapt Dep.Dagger.hiltCompiler
 
     // Other
     implementation Dep.timber
-
+    implementation Dep.gson
     // Test
     testImplementation Dep.Test.JUnit.junit4
     testImplementation Dep.Test.JUnit.api

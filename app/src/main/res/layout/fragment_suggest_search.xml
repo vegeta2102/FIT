@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="jp.co.vegeta.fit.suggest_search.SuggestSearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_wifi_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:fadeScrollbars="false"
+            android:overScrollMode="never"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="PREVIOUS"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_wifi_list" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="NEXT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_wifi_list" />
+
+        <Button
+            android:id="@+id/inputLongText"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:onClick="@{() -> viewModel.selectMoreText()}"
+            android:text="MORE_TEXT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/next" />
+
+        <View
+            android:id="@+id/address_area"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/drawable_address_area"
+            android:elevation="1dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toStartOf="@id/inputLongText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/previous" />
+
+        <EditText
+            android:id="@+id/text_address"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="40dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:elevation="2dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="start|center_vertical"
+            android:hint="@string/hint"
+            android:longClickable="false"
+            android:singleLine="true"
+            android:textColor="@color/text_white"
+            android:textColorHint="@color/text_white_disabled"
+            android:textCursorDrawable="@drawable/freeword_search_cursor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/address_area"
+            app:layout_constraintEnd_toStartOf="@id/inputLongText"
+            app:layout_constraintStart_toStartOf="@id/address_area"
+            app:layout_constraintTop_toTopOf="@id/address_area" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:focusable="true"
+            app:layout_constraintEnd_toStartOf="@id/inputLongText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/previous" />
+
+        <Button
+            android:id="@+id/inputA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.selectPadKey()}"
+            android:text="ABC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/address_area" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:onClick="@{() -> viewModel.delete()}"
+            android:text="DEL"
+            app:layout_constraintStart_toEndOf="@id/inputA"
+            app:layout_constraintTop_toBottomOf="@id/address_area" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/delete">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Normal EditText"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

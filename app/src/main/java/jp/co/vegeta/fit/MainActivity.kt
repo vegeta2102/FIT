@@ -1,44 +1,30 @@
 package jp.co.vegeta.fit
 
-import android.Manifest
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import app.mobilitytechnologies.lib.map.MapComponent
-import app.mobilitytechnologies.lib.navi.globalnavi.flow.flowEnd
-import app.mobilitytechnologies.lib.navi.globalnavi.flow.flowInit
-import app.mobilitytechnologies.lib.navi.model.engine.NaviEngine
 import dagger.hilt.android.AndroidEntryPoint
+import jp.co.vegeta.core.dialog.MessageBoxFragment
 import jp.co.vegeta.fit.databinding.ActivityMainBinding
 import jp.co.vegeta.startup.StartupViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import permissions.dispatcher.NeedsPermission
-import permissions.dispatcher.RuntimePermissions
 import timber.log.Timber
-import javax.inject.Inject
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
-@RuntimePermissions
 class MainActivity : AppCompatActivity() {
 
     companion object {
         val TAG = MainActivity::class.simpleName
     }
 
-    private val viewModel: StartupViewModel by viewModels()
-    private val mainViewModel: MainViewModel by viewModels()
-
+    private val startupViewModel: StartupViewModel by viewModels()
     private lateinit var viewDataBinding: ActivityMainBinding
-    /** メインのFragmentを制御するNavController */
+    private val mainViewModel: MainViewModel by viewModels()
 
     private val navController: NavController by lazy {
         // https://stackoverflow.com/questions/58703451/fragmentcontainerview-as-navhostfragment
@@ -49,29 +35,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewDataBinding = DataBindingUtil.setContentView<ActivityMainBinding>(
+        viewDataBinding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_main
-        ).apply {
-            lifecycleOwner = this@MainActivity
-            viewModel = this@MainActivity.mainViewModel
-        }
-        mainViewModel.initObserve()
-        with(viewModel) {
+        )
+        viewDataBinding.lifecycleOwner = this
+        viewDataBinding.viewModel = mainViewModel
+        with(startupViewModel) {
             initFinished.observe(this@MainActivity) {
                 Timber.d("Init Finished")
-                navController.navigate(R.id.action_to_main)
+                // navController.navigate(R.id.action_to_search)
+                navController.navigate(R.id.action_to_suggest_search)
+                // navController.navigate(R.id.action_to_voice_recognize)
             }
         }
 
-    }
-
-    @NeedsPermission(
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_PHONE_STATE,
-    )
-    fun init() {
-
+        with(mainViewModel) {
+            showDialog.observe(this@MainActivity) {
+                Timber.d("Dialog come here for showing $it")
+                it.message?.let {
+                    MessageBoxFragment.show(supportFragmentManager, "SHOW", it)
+                }
+            }
+            hideDialog.observe(this@MainActivity) {
+                Timber.d("Dialog come here for hidding")
+                MessageBoxFragment.hide(supportFragmentManager, "SHOW")
+            }
+        }
     }
 }

@@ -13,4 +13,6 @@
     <color name="line_white">#f2f2f2</color>
     <color name="button_text_color">#0b2249</color>
     <color name="bg_gray">#1f2938</color>
+    <color name="bg_red">#f23030</color>
+    <color name="bg_red_30">#4DF23030</color>
 </resources>

@@ -73,14 +73,11 @@ android {
 }
 
 dependencies {
-
+    implementation project(":feature:voiceRecoginize")
     implementation project(":feature:startup")
     implementation project(":feature:model")
     implementation project(":feature:repository")
     implementation project(":feature:core")
-
-    // Mapbox
-    implementation Dep.Mapbox.mapbox
 
     // Google
     implementation Dep.Google.playService
@@ -120,7 +117,6 @@ dependencies {
 
     // Hilt-Dagger
     implementation Dep.Dagger.hilt
-    implementation Dep.Dagger.hiltViewModel
     kapt Dep.Dagger.hiltAndroidCompiler
     kapt Dep.Dagger.hiltCompiler
 
@@ -132,11 +128,7 @@ dependencies {
 
     // Other
     implementation Dep.timber
-    implementation Dep.Mot.map
-    implementation Dep.Mot.navi
-    implementation Dep.Mot.naviFlow
-    implementation Dep.Mot.globalNavi
-
+    implementation Dep.Jetpack.DataStore.core
     // Test
     testImplementation Dep.Test.JUnit.junit4
     testImplementation Dep.Test.JUnit.api

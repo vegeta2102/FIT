@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="jp.co.vegeta.fit.SearchViewModel" />
+
+        <variable
+            name="item"
+            type="jp.co.vegeta.model.UserItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/ssid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@{item.spanText == null ? item.text : item.spanText}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="Hello" />
+    </androidx.cardview.widget.CardView>
+</layout>
