@@ -2,6 +2,7 @@ package jp.co.vegeta.fit.suggest_search
 
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import jp.co.vegeta.dialog.DialogBoxRepository
 import jp.co.vegeta.user.RegularCheckActiveRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -13,7 +14,8 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class SuggestSearchViewModel @Inject constructor(
-    private val regularCheckActiveRepository: RegularCheckActiveRepository
+    private val regularCheckActiveRepository: RegularCheckActiveRepository,
+    private val dialogBoxRepository: DialogBoxRepository
 ) : ViewModel(), LifecycleObserver {
 
     private val _userList = MutableLiveData<List<String>>()
@@ -35,6 +37,18 @@ class SuggestSearchViewModel @Inject constructor(
         // startCheck()
         viewModelScope.launch {
             regularCheckActiveRepository.check()
+        }
+        viewModelScope.launch {
+            Timber.d("MapTest start?")
+            regularCheckActiveRepository.syncWithCallback(
+                onSuccess = { test ->
+                    Timber.d("MapTest Success: $test")
+                },
+                onFailure = {
+                    Timber.d("MapTest Failure: $it")
+                }
+            )
+            Timber.d("MapTest What ??")
         }
         /*viewModelScope.launch {
             try {
@@ -99,9 +113,26 @@ class SuggestSearchViewModel @Inject constructor(
     }
 
     fun selectMoreText() {
-        _searchQueryText.postValue(
+        /*_searchQueryText.postValue(
             _searchQueryText.value?.plus("あいAうえお")
-        )
+        )*/
+        viewModelScope.launch {
+            dialogBoxRepository.showWithTimeout("Hello",
+                action = {
+                    delay(10000L)
+                    Timber.d("Dialog will be closed")
+                },
+                doNextAction = {
+                    dialogBoxRepository.showWithTimeout(
+                        "Hehe ! I show again",
+                        action = { delay(3000L) })
+                }
+            )
+        }
+        viewModelScope.launch {
+            /*delay(5000L)
+            dialogBoxRepository.hide()*/
+        }
     }
 
     fun delete() {

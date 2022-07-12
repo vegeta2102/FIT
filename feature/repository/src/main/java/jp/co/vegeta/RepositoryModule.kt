@@ -8,6 +8,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import jp.co.vegeta.core.extentions.ResourceProvider
 import jp.co.vegeta.core.extentions.ResourceProviderImpl
+import jp.co.vegeta.dialog.DialogBoxRepository
+import jp.co.vegeta.dialog.DialogBoxRepositoryImpl
 import jp.co.vegeta.user.RegularCheckActiveRepository
 import jp.co.vegeta.user.RegularCheckActiveRepositoryImpl
 import jp.co.vegeta.user.UserRepository
@@ -37,6 +39,12 @@ internal abstract class RepositoryModule {
         @Singleton
         fun provideRegularCheckActiveRepository(): RegularCheckActiveRepository {
             return RegularCheckActiveRepositoryImpl()
+        }
+
+        @Provides
+        @Singleton
+        fun provideDialogBoxRepository(): DialogBoxRepository {
+            return DialogBoxRepositoryImpl()
         }
     }
 }

@@ -18,7 +18,9 @@
         <entry key="app/src/main/res/layout/item_user.xml" value="0.21" />
         <entry key="app/src/main/res/layout/item_wifi.xml" value="0.31657608695652173" />
         <entry key="feature/core/src/main/res/drawable/drawable_address_area.xml" value="0.298" />
+        <entry key="feature/core/src/main/res/drawable/drawable_background_light_gray_with_white_line.xml" value="0.312" />
         <entry key="feature/core/src/main/res/drawable/searchview_background.xml" value="0.1295" />
+        <entry key="feature/core/src/main/res/layout/fragment_processing_dialog.xml" value="0.31666666666666665" />
         <entry key="feature/startup/src/main/res/layout/fragment_startup.xml" value="0.14994934143870314" />
         <entry key="feature/voiceRecoginize/src/main/res/layout/fragment_voice_recognize.xml" value="0.2" />
       </map>

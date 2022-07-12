@@ -37,4 +37,14 @@ class RegularCheckActiveRepositoryImpl @Inject constructor() : RegularCheckActiv
             emit("Test4")
         }*/
     }
+
+    override suspend fun syncWithCallback(
+        onSuccess: (String) -> Unit,
+        onFailure: (error: Throwable) -> Unit
+    ) {
+        delay(3000)
+        onSuccess.invoke("Testing")
+        delay(3000)
+        onFailure.invoke(Throwable("Error testing"))
+    }
 }

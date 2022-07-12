@@ -8,5 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface RegularCheckActiveRepository {
     val data: Flow<Int>
     suspend fun check()
-    suspend fun syncMapMarker() : Flow<String>
+    suspend fun syncMapMarker(): Flow<String>
+    suspend fun syncWithCallback(onSuccess: (String) -> Unit, onFailure: (error: Throwable) -> Unit)
 }
